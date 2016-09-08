@@ -5,7 +5,7 @@ CHIBIOS    = ../ChibiOS_2.6.2
 CONVEX     = ../convex/cortex
 
 # uncomment to use the optional code like the smart motor library
-#CONVEX_OPT  = yes
+CONVEX_OPT  = yes
 
 # User C code files
 VEXUSERSRC = vexuser.c
