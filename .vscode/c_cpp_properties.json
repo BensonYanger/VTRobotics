@@ -18,8 +18,8 @@
         },
         {
             "name": "Win32",
-            "includePath": ["c:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include","C:/MinGW/include","C:/Robotics/Code/convex/cortex/fw",
-            "C:/Robotics/Code/convex/cortex/opt","C:/Robotics/Code/ChibiOS_2.6.2/os/hal/include","C:/Robotics/Code/ChibiOS_2.6.2/os/kernel/include"],
+            "includePath": ["R:/MinGW/include","R:/Robotics/Code/convex/cortex/fw","R:/Robotics/Code/convex/cortex/opt",
+            "R:/Robotics/Code/ChibiOS_2.6.2/os/hal/include","R:/Robotics/Code/ChibiOS_2.6.2/os/kernel/include"],
             "browse" : {
                 "limitSymbolsToIncludedHeaders" : true,
                 "databaseFilename" : ""
