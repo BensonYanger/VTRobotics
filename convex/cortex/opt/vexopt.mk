@@ -5,7 +5,7 @@ VEXOPTSRC = ${CONVEX}/opt/robotc_glue.c \
             ${CONVEX}/opt/pidlib.c \
             ${CONVEX}/opt/vexgyro.c \
             ${CONVEX}/opt/vexflash.c \
-            ${CONVEX}/opt/stm32_flash.c 
+            ${CONVEX}/opt/stm32_flash.c
             
 # Required include directories
 VEXOPTINC = ${CONVEX}/opt

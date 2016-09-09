@@ -394,7 +394,7 @@ vexCortexMonitorTask(void *arg)
                 {
                 // Autonomous
                 // Start the operator thread at higher than normal priority
-            	tp = chThdCreateStatic(waVexUserTask, sizeof(waVexUserTask), USER_THREAD_PRIORITY, vexAutonomous, NULL);
+                tp = chThdCreateStatic(waVexUserTask, sizeof(waVexUserTask), USER_THREAD_PRIORITY, vexAutonomous, NULL);
                 state = kFlagAutonomousMode;
                 }
 
