@@ -93,6 +93,9 @@ int main(void)
 	// Init the serial port associated with the console
 	vexConsoleInit();
 
+    // Set the team name
+    vexSpiTeamnameSet("600R");
+
     // init VEX
     vexCortexInit();
 
