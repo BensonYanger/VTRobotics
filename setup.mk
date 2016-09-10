@@ -14,6 +14,6 @@ VEXUSERSRC = vexuser.c  \
              drive.c
 
 # Uncomment and add/modify user include files
-VEXUSERINC = auto.h \
-             pid.h  \
-             drive.h
+#VEXUSERINC = auto.h \
+              pid.h  \
+              drive.h
