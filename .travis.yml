@@ -9,12 +9,10 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
+            - binutils-arm-none-eabi
+            - gcc-arm-none-eabi
             - g++-4.9
       env: COMPILER=g++-4.9
-
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y binutils-arm-none-eabi gcc-arm-none-eabi
 
 script:
     - make
