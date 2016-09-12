@@ -9,7 +9,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-			- binutils-arm-none-eabi
+			      - binutils-arm-none-eabi
             - g++-4.9
       env: COMPILER=g++-4.9
     - compiler: gcc
@@ -18,7 +18,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-			- binutils-arm-none-eabi
+			      - binutils-arm-none-eabi
             - g++-5.3
       env: COMPILER=g++-5.3
     - compiler: gcc
@@ -27,12 +27,9 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-			- binutils-arm-none-eabi
+			      - binutils-arm-none-eabi
             - g++-6.1
       env: COMPILER=g++-6.1
 
 script:
     - make
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
