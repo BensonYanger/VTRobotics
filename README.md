@@ -4,10 +4,6 @@ VEX Robotics program for the 2016-2017 Starstruck season. Team 600R Programmed u
 http://www.vexforum.com/index.php/10069-convex-open-source-firmware-for-the-cortex/0
 
 ## Dependencies:
-ConVEX (included)  
-ChibiOS/RT 2.6.2 (included)  
-http://chibios.org
-
-GCC 4.x  
+GCC  
 ARM Toolchain  
 https://launchpad.net/gcc-arm-embedded  
