@@ -11,6 +11,22 @@ matrix:
           packages:
             - g++-4.9
       env: COMPILER=g++-4.9
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5.3
+      env: COMPILER=g++-5.3
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6.1
+      env: COMPILER=g++-6.1
 
 before_install:
   - sudo apt-get -qq update
