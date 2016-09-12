@@ -1,3 +1,3 @@
 #include "vexstdinc.h"
 
-#include "lcd.h"
+#include "autos.h"
