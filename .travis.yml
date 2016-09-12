@@ -9,7 +9,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-			      - binutils-arm-none-eabi
             - g++-4.9
       env: COMPILER=g++-4.9
     - compiler: gcc
@@ -18,7 +17,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-			      - binutils-arm-none-eabi
             - g++-5.3
       env: COMPILER=g++-5.3
     - compiler: gcc
@@ -27,9 +25,12 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-			      - binutils-arm-none-eabi
             - g++-6.1
       env: COMPILER=g++-6.1
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y binutils-arm-none-eabi
 
 script:
     - make
