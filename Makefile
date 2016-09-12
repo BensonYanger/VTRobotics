@@ -210,7 +210,7 @@ DLIBS =
 #
 
 # List all user C define here, like -D_DEBUG=1
-UDEFS =
+UDEFS = -DVEX_WATCHDOG_ENABLE
 
 # Define ASM defines here
 UADEFS =
