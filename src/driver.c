@@ -9,9 +9,6 @@
  *  This thread is started when the driver control period is started
  */
 
-#define MotorDriveL     kVexMotor_1
-#define MotorDriveR     kVexMotor_10
-
 msg_t
 vexOperator( void *arg )
 {
@@ -30,14 +27,20 @@ vexOperator( void *arg )
 
 		// status on LCD of encoder and sonar
 		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_1, "%4.2fV   %8.1f", vexSpiGetMainBattery() / 1000.0, chTimeNow() / 1000.0 );
-		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_2, "L %3d R %3d", vexMotorGet( MotorDriveL ), vexMotorGet( MotorDriveR ) );
+		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_2, "L %3d R %3d", vexMotorGet( kVexMotor_1 ), vexMotorGet( kVexMotor_10 ) );
 
-		// Tank drive
-		// left drive
-		vexMotorSet( MotorDriveL, vexControllerGet( Ch3 ) );
+		// motors
+		vexMotorSet( kVexMotor_1, vexControllerGet( Ch3 ) );
+		vexMotorSet( kVexMotor_2, vexControllerGet( Ch3 ) );
+		vexMotorSet( kVexMotor_3, vexControllerGet( Ch3 ) );
+		vexMotorSet( kVexMotor_4, vexControllerGet( Ch3 ) );
+		vexMotorSet( kVexMotor_5, vexControllerGet( Ch3 ) );
 
-		// right drive
-		vexMotorSet( MotorDriveR, vexControllerGet( Ch2 ) );
+		vexMotorSet( kVexMotor_6, vexControllerGet( Ch2 ) );
+		vexMotorSet( kVexMotor_7, vexControllerGet( Ch2 ) );
+		vexMotorSet( kVexMotor_8, vexControllerGet( Ch2 ) );
+		vexMotorSet( kVexMotor_9, vexControllerGet( Ch2 ) );
+		vexMotorSet( kVexMotor_10, vexControllerGet( Ch2 ) );
 
 		// Don't hog cpu
 		vexSleep( 25 );

@@ -5,6 +5,6 @@
 extern "C" {
 #endif
 
-
+msg_t lcdAuto(void *arg);
 
 #endif  /* _LCD_H_ */
