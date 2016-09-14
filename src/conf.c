@@ -6,16 +6,16 @@
 static  vexDigiCfg  dConfig[kVexDigital_Num] = {
         { kVexDigital_1,    kVexSensorDigitalOutput, kVexConfigOutput,      0 },
         { kVexDigital_2,    kVexSensorDigitalOutput, kVexConfigOutput,      0 },
-        { kVexDigital_3,    kVexSensorDigitalInput,  kVexConfigInput,       0 },
+        { kVexDigital_3,    kVexSensorDigitalOutput, kVexConfigOutput,      0 },
         { kVexDigital_4,    kVexSensorDigitalInput,  kVexConfigInput,       0 },
         { kVexDigital_5,    kVexSensorDigitalInput,  kVexConfigInput,       0 },
         { kVexDigital_6,    kVexSensorDigitalInput,  kVexConfigInput,       0 },
         { kVexDigital_7,    kVexSensorDigitalInput,  kVexConfigInput,       0 },
         { kVexDigital_8,    kVexSensorDigitalInput,  kVexConfigInput,       0 },
         { kVexDigital_9,    kVexSensorDigitalInput,  kVexConfigInput,       0 },
-        { kVexDigital_10,   kVexSensorDigitalInput,  kVexConfigInput,       0 },
-        { kVexDigital_11,   kVexSensorDigitalInput,  kVexConfigInput,       0 },
-        { kVexDigital_12,   kVexSensorDigitalInput,  kVexConfigInput,       0 }
+        { kVexDigital_10,   kVexSensorDigitalOutput, kVexConfigOutput,       0 },
+        { kVexDigital_11,   kVexSensorDigitalOutput, kVexConfigOutput,       0 },
+        { kVexDigital_12,   kVexSensorDigitalOutput, kVexConfigOutput,       0 }
 };
 
 static  vexMotorCfg mConfig[kVexMotorNum] = {

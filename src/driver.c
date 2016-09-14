@@ -12,7 +12,13 @@
 msg_t
 vexOperator( void *arg )
 {
-	int16_t		blink = 0;
+	int16_t		blinkr1 = 0;
+	int16_t		blinky1 = 0;
+	int16_t		blinkg1 = 0;
+
+	int16_t		blinkr2 = 0;
+	int16_t		blinky2 = 0;
+	int16_t		blinkg2 = 0;
 
 	(void)arg;
 
@@ -23,7 +29,13 @@ vexOperator( void *arg )
 	while(!chThdShouldTerminate())
 		{
 		// flash led/digi out
-		vexDigitalPinSet( kVexDigital_1, (blink++ >> 3) & 1);
+		vexDigitalPinSet( kVexDigital_1, (blinkr1++ >> 2) & 1);
+		vexDigitalPinSet( kVexDigital_2, (blinky1++ >> 2) & 1);
+		vexDigitalPinSet( kVexDigital_3, (blinkg1++ >> 2) & 1);
+
+		vexDigitalPinSet( kVexDigital_10, (blinkr2++ >> 2) & 1);
+		vexDigitalPinSet( kVexDigital_11, (blinky2++ >> 2) & 1);
+		vexDigitalPinSet( kVexDigital_12, (blinkg2++ >> 2) & 1);
 
 		// status on LCD of encoder and sonar
 		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_1, "%4.2fV   %8.1f", vexSpiGetMainBattery() / 1000.0, chTimeNow() / 1000.0 );
