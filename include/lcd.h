@@ -5,11 +5,12 @@
 extern "C" {
 #endif
 
+extern int auton;
+
 typedef struct lcdMenu {
     int pageMin;
     int pageMax;
     int page;
-    int auton;
 }lcdMenu;
 
 msg_t lcdAuto(void *arg);

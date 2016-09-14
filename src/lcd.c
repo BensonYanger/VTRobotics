@@ -15,7 +15,6 @@ lcdAuto(void *arg) {
     // call lcdmenu struct
     lcdMenu lcdmenu;
     lcdmenu.page = 1;
-    lcdmenu.auton = 0;
     lcdmenu.pageMin = 1;
     lcdmenu.pageMax = 5;
 
@@ -40,7 +39,7 @@ lcdAuto(void *arg) {
                 }
             }
 
-            if(lcdmenu.page == 1 && lcdmenu.auton != 1) {
+            if(lcdmenu.page == 1 && auton != 1) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "       1        ");
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "    i dunno     ");
                 if(vexLcdButtonGet(VEX_LCD_DISPLAY_1) == 2) {
@@ -48,10 +47,10 @@ lcdAuto(void *arg) {
                     vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " Been Selected! ");
                     vexSleep(1000);
                 }
-            } else if(lcdmenu.page == 1 && lcdmenu.auton == 1) {
+            } else if(lcdmenu.page == 1 && auton == 1) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      [1]       ");
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "    i dunno     ");
-            } else if(lcdmenu.page == 2 && lcdmenu.auton != 2) {
+            } else if(lcdmenu.page == 2 && auton != 2) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "       2        ");
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "      idk       ");
                 if(vexLcdButtonGet(VEX_LCD_DISPLAY_1) == 2) {
@@ -59,7 +58,7 @@ lcdAuto(void *arg) {
                     vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " Been Selected! ");
                     vexSleep(1000);
                 }
-            } else if(lcdmenu.page == 2 && lcdmenu.auton == 2) {
+            } else if(lcdmenu.page == 2 && auton == 2) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      [2]       ");
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      idk       ");
             }
