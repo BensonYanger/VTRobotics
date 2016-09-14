@@ -7,4 +7,8 @@ extern "C" {
 
 
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif  /* _DRIVE_H_ */

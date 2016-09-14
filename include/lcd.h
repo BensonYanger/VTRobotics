@@ -7,4 +7,8 @@ extern "C" {
 
 msg_t lcdAuto(void *arg);
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif  /* _LCD_H_ */

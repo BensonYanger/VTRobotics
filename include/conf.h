@@ -7,4 +7,8 @@ extern "C" {
 
 
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif  /* _CONF_H_ */

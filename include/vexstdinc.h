@@ -11,4 +11,10 @@
 extern "C" {
 #endif
 
+
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif  /* _VEXSTDINC_H_ */
