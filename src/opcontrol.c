@@ -31,6 +31,15 @@
  */
 void operatorControl() {
 	while (1) {
+		int joyLy = joystickGetAnalog(1, 3);
+		int joyRy = joystickGetAnalog(1, 2);
+
+		motorSet(4, joyLy);
+		motorSet(5, joyLy);
+
+		motorSet(6, joyRy);
+		motorSet(7, joyRy);
+
 		delay(20);
 	}
 }
