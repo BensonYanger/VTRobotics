@@ -5,7 +5,8 @@
 extern "C" {
 #endif
 
-
+msg_t tankDrive(void *arg);
+int startTankDrive();
 
 #ifdef __cplusplus
 }

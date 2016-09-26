@@ -48,11 +48,7 @@ vexOperator( void *arg )
 		vexMotorSet( kVexMotor_1, vexControllerGet( Ch3 ) );
 		vexMotorSet( kVexMotor_2, vexControllerGet( Ch3 ) );
 		vexMotorSet( kVexMotor_3, vexControllerGet( Ch3 ) );
-		vexMotorSet( kVexMotor_4, vexControllerGet( Ch3 ) );
-		vexMotorSet( kVexMotor_5, vexControllerGet( Ch3 ) );
 
-		vexMotorSet( kVexMotor_6, vexControllerGet( Ch2 ) );
-		vexMotorSet( kVexMotor_7, vexControllerGet( Ch2 ) );
 		vexMotorSet( kVexMotor_8, vexControllerGet( Ch2 ) );
 		vexMotorSet( kVexMotor_9, vexControllerGet( Ch2 ) );
 		vexMotorSet( kVexMotor_10, vexControllerGet( Ch2 ) );
