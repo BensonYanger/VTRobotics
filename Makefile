@@ -1,238 +1,84 @@
-##############################################################################
-# Build global options
-# NOTE: Can be overridden externally.
-#
-include setup.mk
+# Universal C Makefile for MCU targets
 
-# Compiler options here.
-ifeq ($(USE_OPT),)
-  USE_OPT = -O2 -ggdb -fomit-frame-pointer -falign-functions=16
-endif
+LIBNAME=libpros
 
-# C specific options here (added to USE_OPT).
-ifeq ($(USE_COPT),)
-  USE_COPT = 
-endif
+# Path to project root (for top-level, so the project is in ./; first-level, ../; etc.)
+ROOT=.
+# Binary output directory
+BINDIR=$(ROOT)/bin
+# Subdirectories to include in the build
+SUBDIRS=src
 
-# C++ specific options here (added to USE_OPT).
-ifeq ($(USE_CPPOPT),)
-  USE_CPPOPT = -fno-rtti
-endif
+# Nothing below here needs to be modified by typical users
 
-# Enable this if you want the linker to remove unused code and data
-ifeq ($(USE_LINK_GC),)
-  USE_LINK_GC = yes
-endif
+# Include common aspects of this project
+-include $(ROOT)/common.mk
 
-# If enabled, this option allows to compile the application in THUMB mode.
-ifeq ($(USE_THUMB),)
-  USE_THUMB = yes
-endif
+ASMSRC:=$(wildcard *.$(ASMEXT))
+ASMOBJ:=$(patsubst %.o,$(BINDIR)/%.o,$(ASMSRC:.$(ASMEXT)=.o))
+HEADERS:=$(wildcard *.$(HEXT))
+CSRC=$(wildcard *.$(CEXT))
+COBJ:=$(patsubst %.o,$(BINDIR)/%.o,$(CSRC:.$(CEXT)=.o))
+CPPSRC:=$(wildcard *.$(CPPEXT))
+CPPOBJ:=$(patsubst %.o,$(BINDIR)/%.o,$(CPPSRC:.$(CPPEXT)=.o))
+OUT:=$(BINDIR)/$(OUTNAME)
 
-# Enable this if you want to see the full log while compiling.
-ifeq ($(USE_VERBOSE_COMPILE),)
-  USE_VERBOSE_COMPILE = no
-endif
+.PHONY: all clean documentation library upload _force_look
 
-#
-# Build global options
-##############################################################################
+# By default, compile program
+all: $(BINDIR) $(OUT)
 
-##############################################################################
-# Architecture or project specific options
-#
+# Remove all intermediate object files (remove the binary directory)
+clean:
+	-rm -f $(OUT)
+	-rm -rf $(BINDIR)
 
-# Enable this if you really want to use the STM FWLib.
-ifeq ($(USE_FWLIB),)
-  USE_FWLIB = no
-endif
+# Uploads program to device
+upload: all
+	$(UPLOAD)
 
-#
-# Architecture or project specific options
-##############################################################################
+# Phony force-look target
+_force_look:
+	@true
 
-##############################################################################
-# Project, sources and paths
-#
+# Compiles library for general HS use
+library: clean $(BINDIR) $(SUBDIRS) $(ASMOBJ) $(COBJ) $(CPPOBJ)
+	# Get rid of junk that the user should be doing
+	-rm -f $(BINDIR)/opcontrol.o
+	-rm -f $(BINDIR)/init.o
+	-rm -f $(BINDIR)/auto.o
+	$(MCUPREFIX)ar rvs $(BINDIR)/$(LIBNAME)_sym.a $(BINDIR)/*.o
+	$(MCUPREFIX)objcopy -S -g --strip-unneeded --keep-symbols public.txt $(BINDIR)/$(LIBNAME)_sym.a $(BINDIR)/$(LIBNAME).a
 
-# PROS compatible build directory
-ifeq ($(BUILDDIR),)
-BUILDDIR = bin
-endif
+# Builds the documentation
+documentation:
+	doxygen Doxyfile
 
-# Define project name here
-ifeq ($(PROJECT),)
-PROJECT  = output
-endif
+# Looks in subdirectories for things to make
+$(SUBDIRS): %: _force_look
+	@$(MAKE) --no-print-directory -C $@
 
-# Path to ChibiOS/RT - default assumes making examples
-ifeq ($(CHIBIOS),)
-CHIBIOS = ../../../../ChibiOS_2.6.2
-endif
+# Ensure binary directory exists
+$(BINDIR):
+	-@mkdir -p $(BINDIR)
 
-# Path to ConVEX root - default assumes making examples
-ifeq ($(CONVEX),)
-CONVEX  = ../..
-endif
+# Compile program
+$(OUT): $(SUBDIRS) $(ASMOBJ) $(COBJ) $(CPPOBJ)
+	@echo LN $(BINDIR)/*.o $(LIBRARIES) to $@
+	@$(CC) $(LDFLAGS) $(BINDIR)/*.o $(LIBRARIES) -o $@
+	@$(MCUPREFIX)size $(SIZEFLAGS) $(OUT)
+	$(MCUPREPARE)
 
-# Imported source files and paths
-include $(CONVEX)/boards/VEX_STM32_CORTEX/board.mk
-include $(CHIBIOS)/os/hal/platforms/STM32F1xx/platform.mk
-include $(CHIBIOS)/os/hal/hal.mk
-include $(CHIBIOS)/os/ports/GCC/ARMCMx/STM32F1xx/port.mk
-include $(CHIBIOS)/os/kernel/kernel.mk
-include $(CONVEX)/fw/vexfw.mk
+# Assembly source file management
+$(ASMOBJ): $(BINDIR)/%.o: %.$(ASMEXT) $(HEADERS)
+	@echo AS $<
+	@$(AS) $(AFLAGS) -o $@ $<
 
-# include the optional code
-ifeq    ($(CONVEX_OPT),yes)
-include $(CONVEX)/opt/vexopt.mk
-endif
+# Object management
+$(COBJ): $(BINDIR)/%.o: %.$(CEXT) $(HEADERS)
+	@echo CC $(INCLUDE) $<
+	@$(CC) $(INCLUDE) $(CFLAGS) -o $@ $<
 
-# Define linker script file here
-LDSCRIPT= $(CONVEX)/ld/STM32F103xD.ld
-
-
-# C sources that can be compiled in ARM or THUMB mode depending on the global
-# setting.
-# replaced standard shell with custom variant
-# $(CHIBIOS)/os/various/shell.c \
-       
-CSRC = $(PORTSRC) \
-       $(KERNSRC) \
-       $(HALSRC) \
-       $(PLATFORMSRC) \
-       $(BOARDSRC) \
-       $(CHIBIOS)/os/various/evtimer.c \
-       $(CHIBIOS)/os/various/syscalls.c \
-       $(CHIBIOS)/os/various/chprintf.c \
-       $(VEXFWSRC) \
-       $(VEXOPTSRC) \
-       $(VEXUSERSRC) \
-       main.c
-
-# C++ sources that can be compiled in ARM or THUMB mode depending on the global
-# setting.
-CPPSRC =
-
-# C sources to be compiled in ARM mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-ACSRC =
-
-# C++ sources to be compiled in ARM mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-ACPPSRC =
-
-# C sources to be compiled in THUMB mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-TCSRC =
-
-# C sources to be compiled in THUMB mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-TCPPSRC =
-
-# List ASM source files here
-ASMSRC = $(PORTASM)
-
-INCDIR = $(PORTINC) $(KERNINC) \
-         $(HALINC) $(PLATFORMINC) $(BOARDINC) \
-         $(CHIBIOS)/os/various $(VEXFWINC) $(VEXOPTINC) $(VEXUSERINC)
-
-#
-# Project, sources and paths
-##############################################################################
-
-##############################################################################
-# Compiler settings
-#
-
-MCU  = cortex-m3
-
-#TRGT = arm-elf-
-TRGT = arm-none-eabi-
-CC   = $(TRGT)gcc
-CPPC = $(TRGT)g++
-# Enable loading with g++ only if you need C++ runtime support.
-# NOTE: You can use C++ even without C++ support if you are careful. C++
-#       runtime support makes code size explode.
-LD   = $(TRGT)gcc
-#LD   = $(TRGT)g++
-CP   = $(TRGT)objcopy
-AS   = $(TRGT)gcc -x assembler-with-cpp
-OD   = $(TRGT)objdump
-HEX  = $(CP) -O ihex
-BIN  = $(CP) -O binary
-
-# ARM-specific options here
-AOPT =
-
-# THUMB-specific options here
-TOPT = -mthumb -DTHUMB
-
-# Define C warning options here
-CWARN = -Wall -Wextra -Wstrict-prototypes
-
-# Define C++ warning options here
-CPPWARN = -Wall -Wextra
-
-#
-# Compiler settings
-##############################################################################
-
-##############################################################################
-# Start of default section
-#
-
-# List all default C defines here, like -D_DEBUG=1
-DDEFS =
-
-# List all default ASM defines here, like -D_DEBUG=1
-DADEFS =
-
-# List all default directories to look for include files here
-DINCDIR =
-
-# List the default directory to look for the libraries here
-DLIBDIR = 
-
-# List all default libraries here
-DLIBS =
-
-#
-# End of default section
-##############################################################################
-
-##############################################################################
-# Start of user section
-#
-
-# List all user C define here, like -D_DEBUG=1
-UDEFS = -DVEX_WATCHDOG_ENABLE
-
-# Define ASM defines here
-UADEFS =
-
-# List all user directories here
-UINCDIR =
-
-# List the user directory to look for the libraries here
-ULIBDIR =
-
-# List all user libraries here
-ULIBS = -lm
-
-#
-# End of user defines
-##############################################################################
-
-ifeq ($(USE_FWLIB),yes)
-  include $(CHIBIOS)/ext/stm32lib/stm32lib.mk
-  CSRC += $(STM32SRC)
-  INCDIR += $(STM32INC)
-  USE_OPT += -DUSE_STDPERIPH_DRIVER
-endif
-
-include $(CHIBIOS)/os/ports/GCC/ARMCMx/rules.mk
+$(CPPOBJ): $(BINDIR)/%.o: %.$(CPPEXT) $(HEADERS)
+	@echo CPC $(INCLUDE) $<
+	@$(CPPCC) $(INCLUDE) $(CPPFLAGS) -o $@ $<
