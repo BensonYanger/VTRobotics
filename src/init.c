@@ -12,9 +12,9 @@
  *  been established with the master processor.
  *  Start other tasks and initialize user variables here
  */
- 
+
 void
 vexUserInit()
 {
-    startTankDrive();
+    //startTankDrive();
 }

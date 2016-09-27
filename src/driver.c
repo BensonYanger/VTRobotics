@@ -45,13 +45,38 @@ vexOperator( void *arg )
 		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "");
 
 		// motors
-		vexMotorSet( kVexMotor_1, vexControllerGet( Ch3 ) );
-		vexMotorSet( kVexMotor_2, vexControllerGet( Ch3 ) );
-		vexMotorSet( kVexMotor_3, vexControllerGet( Ch3 ) );
+		vexMotorSet( kVexMotor_4, -vexControllerGet( Ch3 ) );
+		vexMotorSet( kVexMotor_5, -vexControllerGet( Ch3 ) );
 
-		vexMotorSet( kVexMotor_8, vexControllerGet( Ch2 ) );
-		vexMotorSet( kVexMotor_9, vexControllerGet( Ch2 ) );
-		vexMotorSet( kVexMotor_10, vexControllerGet( Ch2 ) );
+		vexMotorSet( kVexMotor_6, -vexControllerGet( Ch2 ) );
+		vexMotorSet( kVexMotor_7, -vexControllerGet( Ch2 ) );
+
+		if(vexControllerGet(Btn6U)) {
+			vexMotorSet(kVexMotor_2, 127);
+			vexMotorSet(kVexMotor_3, 127);
+			vexMotorSet(kVexMotor_8, 127);
+			vexMotorSet(kVexMotor_9, 127);
+		} else if (vexControllerGet(Btn6D)) {
+			vexMotorSet(kVexMotor_2, -127);
+			vexMotorSet(kVexMotor_3, -127);
+			vexMotorSet(kVexMotor_8, -127);
+			vexMotorSet(kVexMotor_9, -127);
+		} else if(vexControllerGet(Btn5U)) {
+			vexMotorSet(kVexMotor_2, 60);
+			vexMotorSet(kVexMotor_3, 60);
+			vexMotorSet(kVexMotor_8, 60);
+			vexMotorSet(kVexMotor_9, 60);
+		} else if (vexControllerGet(Btn5D)) {
+			vexMotorSet(kVexMotor_2, -60);
+			vexMotorSet(kVexMotor_3, -60);
+			vexMotorSet(kVexMotor_8, -60);
+			vexMotorSet(kVexMotor_9, -60);
+		} else {
+			vexMotorSet(kVexMotor_2, 0);
+			vexMotorSet(kVexMotor_3, 0);
+			vexMotorSet(kVexMotor_8, 0);
+			vexMotorSet(kVexMotor_9, 0);
+		}
 
 		// Don't hog cpu
 		vexSleep( 25 );
