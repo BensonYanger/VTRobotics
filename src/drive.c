@@ -12,7 +12,7 @@ tankDrive(void *arg)
     (void)arg;
 
     // Register the task
-    vexTaskRegister("tank drive");
+    vexTaskRegister("tankdrive");
 
     while(1) 
     {
