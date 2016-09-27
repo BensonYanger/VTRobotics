@@ -14,7 +14,7 @@ matrix:
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y binutils-arm-none-eabi gcc-arm-none-eabi
+  - sudo apt-get install -y binutils-arm-none-eabi gcc-arm-none-eabi g++-multilib
 
 script:
     - make
