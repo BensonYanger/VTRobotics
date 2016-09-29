@@ -78,6 +78,10 @@ vexOperator( void *arg )
 			vexMotorSet(kVexMotor_9, 0);
 		}
 
+		if(vexWatchdogResetFlagGet()) {
+			vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " Watchdog Reset ");
+		}
+
 		// Don't hog cpu
 		vexSleep( 25 );
 		}
