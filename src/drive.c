@@ -19,8 +19,8 @@ tankDrive(void *arg)
         joyLy = vexControllerGet(Ch3);
         joyRy = vexControllerGet(Ch2);
 
-        vexMotorSet(kVexMotor_4, joyLy);
-        vexMotorSet(kVexMotor_5, joyLy);
+        vexMotorSet(kVexMotor_4, -joyLy);
+        vexMotorSet(kVexMotor_5, -joyLy);
 
         vexMotorSet(kVexMotor_6, joyRy);
         vexMotorSet(kVexMotor_7, joyRy);
@@ -33,11 +33,8 @@ tankDrive(void *arg)
 }
 
 int
-startTankDrive() {
+startTankDrive(void) {
     // start tank drive
     chThdCreateStatic(waTankDrive, sizeof(waTankDrive), NORMALPRIO - 1, tankDrive, NULL);
-    if (!vexTaskIsRegistered("tank drive")) {
-        return -1;
-    }
     return 0;
 }

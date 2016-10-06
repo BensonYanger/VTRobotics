@@ -2,6 +2,8 @@
 
 #include "driver.h"
 
+#include "drive.h"
+
 /*-----------------------------------------------------------------------------*/
 /** @brief      Driver control                                                 */
 /*-----------------------------------------------------------------------------*/
@@ -12,6 +14,8 @@
 msg_t
 vexOperator( void *arg )
 {
+	startTankDrive();
+
 	int16_t		blinkr1 = 0;
 	int16_t		blinky1 = 0;
 	int16_t		blinkg1 = 0;
@@ -45,11 +49,11 @@ vexOperator( void *arg )
 		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "");
 
 		// motors
-		vexMotorSet( kVexMotor_4, -vexControllerGet( Ch3 ) );
-		vexMotorSet( kVexMotor_5, -vexControllerGet( Ch3 ) );
+		//vexMotorSet( kVexMotor_4, -vexControllerGet( Ch3 ) );
+		//vexMotorSet( kVexMotor_5, -vexControllerGet( Ch3 ) );
 
-		vexMotorSet( kVexMotor_6, -vexControllerGet( Ch2 ) );
-		vexMotorSet( kVexMotor_7, -vexControllerGet( Ch2 ) );
+		//vexMotorSet( kVexMotor_6, -vexControllerGet( Ch2 ) );
+		//vexMotorSet( kVexMotor_7, -vexControllerGet( Ch2 ) );
 
 		if(vexControllerGet(Btn6U)) {
 			vexMotorSet(kVexMotor_2, 127);
