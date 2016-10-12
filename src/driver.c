@@ -56,25 +56,25 @@ vexOperator( void *arg )
 		//vexMotorSet( kVexMotor_7, -vexControllerGet( Ch2 ) );
 
 		if(vexControllerGet(Btn6U)) {
-			vexMotorSet(kVexMotor_2, 127);
-			vexMotorSet(kVexMotor_3, 127);
-			vexMotorSet(kVexMotor_8, 127);
-			vexMotorSet(kVexMotor_9, 127);
-		} else if (vexControllerGet(Btn6D)) {
 			vexMotorSet(kVexMotor_2, -127);
 			vexMotorSet(kVexMotor_3, -127);
 			vexMotorSet(kVexMotor_8, -127);
 			vexMotorSet(kVexMotor_9, -127);
+		} else if (vexControllerGet(Btn6D)) {
+			vexMotorSet(kVexMotor_2, 127);
+			vexMotorSet(kVexMotor_3, 127);
+			vexMotorSet(kVexMotor_8, 127);
+			vexMotorSet(kVexMotor_9, 127);
 		} else if(vexControllerGet(Btn5U)) {
-			vexMotorSet(kVexMotor_2, 60);
-			vexMotorSet(kVexMotor_3, 60);
-			vexMotorSet(kVexMotor_8, 60);
-			vexMotorSet(kVexMotor_9, 60);
-		} else if (vexControllerGet(Btn5D)) {
 			vexMotorSet(kVexMotor_2, -60);
 			vexMotorSet(kVexMotor_3, -60);
 			vexMotorSet(kVexMotor_8, -60);
 			vexMotorSet(kVexMotor_9, -60);
+		} else if (vexControllerGet(Btn5D)) {
+			vexMotorSet(kVexMotor_2, 60);
+			vexMotorSet(kVexMotor_3, 60);
+			vexMotorSet(kVexMotor_8, 60);
+			vexMotorSet(kVexMotor_9, 60);
 		} else {
 			vexMotorSet(kVexMotor_2, 0);
 			vexMotorSet(kVexMotor_3, 0);

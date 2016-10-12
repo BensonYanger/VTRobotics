@@ -14,16 +14,16 @@ tankDrive(void *arg)
     // Register the task
     vexTaskRegister("tankdrive");
 
-    while(1) 
+    while(!chThdShouldTerminate()) 
     {
         joyLy = vexControllerGet(Ch3);
         joyRy = vexControllerGet(Ch2);
 
-        vexMotorSet(kVexMotor_4, -joyLy);
-        vexMotorSet(kVexMotor_5, -joyLy);
+        vexMotorSet(kVexMotor_4, joyLy);
+        vexMotorSet(kVexMotor_7, joyLy);
 
+        vexMotorSet(kVexMotor_5, joyRy);
         vexMotorSet(kVexMotor_6, joyRy);
-        vexMotorSet(kVexMotor_7, joyRy);
 
         // Don't rest cpu
         vexSleep(25);
