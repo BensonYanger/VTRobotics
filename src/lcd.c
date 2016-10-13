@@ -2,7 +2,9 @@
 
 #include "lcd.h"
 
-static WORKING_AREA(waVexLcdAuto, 512);
+static WORKING_AREA(waLcdAuto, 512);
+
+int auton;
 
 msg_t
 lcdAuto(void *arg) {
@@ -18,8 +20,10 @@ lcdAuto(void *arg) {
     lcdmenu.pageMin = 1;
     lcdmenu.pageMax = 5;
 
-    while(true) {
-        if((vexControllerCompetitonState() & kFlagDisabled) == kFlagDisabled) {
+    //testing
+    //while(true) {
+        //if((vexControllerCompetitonState() & kFlagDisabled) == kFlagDisabled) {
+    while((vexControllerCompetitonState() & kFlagDisabled) == kFlagDisabled) {
             if(vexLcdButtonGet(VEX_LCD_DISPLAY_1) == 1) {
                 if(lcdmenu.page == lcdmenu.pageMin) {
                     lcdmenu.page = lcdmenu.pageMax;
@@ -41,28 +45,30 @@ lcdAuto(void *arg) {
 
             if(lcdmenu.page == 1 && auton != 1) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "       1        ");
-                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "    i dunno     ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "      left      ");
                 if(vexLcdButtonGet(VEX_LCD_DISPLAY_1) == 2) {
                     vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, " Autonomous Has ");
                     vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " Been Selected! ");
-                    vexSleep(1000);
+                    auton = 1;
+                    vexSleep(500);
                 }
             } else if(lcdmenu.page == 1 && auton == 1) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      [1]       ");
-                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "    i dunno     ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "      left      ");
             } else if(lcdmenu.page == 2 && auton != 2) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "       2        ");
-                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "      idk       ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "     right      ");
                 if(vexLcdButtonGet(VEX_LCD_DISPLAY_1) == 2) {
                     vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, " Autonomous Has ");
                     vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " Been Selected! ");
-                    vexSleep(1000);
+                    auton = 2;
+                    vexSleep(500);
                 }
             } else if(lcdmenu.page == 2 && auton == 2) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      [2]       ");
-                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      idk       ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "     right      ");
             }
-        }
+        //}
         
 
         // give CPU time
@@ -71,4 +77,11 @@ lcdAuto(void *arg) {
 
     return (msg_t)0;
 
+}
+
+int
+startLcdAuto(void) {
+    // start tank drive
+    chThdCreateStatic(waLcdAuto, sizeof(waLcdAuto), NORMALPRIO - 1, lcdAuto, NULL);
+    return 0;
 }

@@ -1,6 +1,7 @@
 #include "vexstdinc.h"
 
 #include "auto.h"
+#include "lcd.h"
 
 void driveFB(int drive)
 {
@@ -36,7 +37,6 @@ void setLift(int lift)
     vexMotorSet(kVexMotor_9, lift);
 }
 
-//bring it all down in one motion..?
 void startAuto(void)
 {
     driveFB(127);
@@ -54,6 +54,28 @@ void startAuto(void)
 }
 
 void autoLeft(void)
+{
+    turnLeft(30);
+    vexSleep(400);
+    driveFB(0);
+    vexSleep(100);
+    driveFB(80);
+    vexSleep(100);
+    setLift(127);
+    vexSleep(700);
+    driveFB(0);
+    vexSleep(200);
+    setLift(0);
+    driveFB(80);
+    vexSleep(400);
+    driveFB(0);
+    vexSleep(100);
+    driveFB(-80);
+    vexSleep(600);
+    driveFB(0);
+}
+
+void autoRight(void)
 {
     turnRight(30);
     vexSleep(400);
@@ -75,8 +97,6 @@ void autoLeft(void)
     driveFB(0);
 }
 
-
-
 /*-----------------------------------------------------------------------------*/
 /** @brief      Autonomous                                                     */
 /*-----------------------------------------------------------------------------*/
@@ -94,7 +114,12 @@ vexAutonomous( void *arg )
     while(1)
         {
             startAuto();
-            autoLeft();
+            if(auton == 1) {
+                autoLeft();
+            }
+            else if(auton == 2) {
+                autoRight();
+            }
             vexSleep(12500);
             // Don't hog cpu
             vexSleep( 25 );

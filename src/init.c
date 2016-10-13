@@ -3,6 +3,7 @@
 #include "init.h"
 
 #include "drive.h"
+#include "lcd.h"
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      User initialize                                                */
@@ -16,5 +17,6 @@
 void
 vexUserInit()
 {
+    startLcdAuto();
     //startTankDrive();
 }

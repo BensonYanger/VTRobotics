@@ -14,6 +14,7 @@ typedef struct lcdMenu {
 }lcdMenu;
 
 msg_t lcdAuto(void *arg);
+int startLcdAuto(void);
 
 #ifdef __cplusplus
 }
