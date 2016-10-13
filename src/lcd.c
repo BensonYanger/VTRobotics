@@ -12,18 +12,20 @@ lcdAuto(void *arg) {
     (void)arg;
 
     // register the task
-    vexTaskRegister("lcdauto");
+    //vexTaskRegister("lcdauto");
 
     // call lcdmenu struct
     lcdMenu lcdmenu;
     lcdmenu.page = 1;
     lcdmenu.pageMin = 1;
-    lcdmenu.pageMax = 5;
+    lcdmenu.pageMax = 2;
 
     //testing
-    //while(true) {
+    while(true) {
         //if((vexControllerCompetitonState() & kFlagDisabled) == kFlagDisabled) {
-    while((vexControllerCompetitonState() & kFlagDisabled) == kFlagDisabled) {
+    //while((vexControllerCompetitonState() & kFlagDisabled) == kFlagDisabled) {
+        if((vexControllerCompetitonState() & kFlagDisabled) == kFlagDisabled)
+        {
             if(vexLcdButtonGet(VEX_LCD_DISPLAY_1) == 1) {
                 if(lcdmenu.page == lcdmenu.pageMin) {
                     lcdmenu.page = lcdmenu.pageMax;
@@ -68,11 +70,11 @@ lcdAuto(void *arg) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      [2]       ");
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "     right      ");
             }
-        //}
+        }
         
 
         // give CPU time
-        vexSleep(25);
+        vexSleep(20);
     }
 
     return (msg_t)0;

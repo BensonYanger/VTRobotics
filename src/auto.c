@@ -40,9 +40,9 @@ void setLift(int lift)
 void startAuto(void)
 {
     driveFB(127);
-    vexSleep(200);
+    vexSleep(300);
     setLift(127);
-    vexSleep(400);
+    vexSleep(500);
     driveFB(0);
     setLift(0);
     vexSleep(100);
@@ -67,11 +67,19 @@ void autoLeft(void)
     vexSleep(200);
     setLift(0);
     driveFB(80);
-    vexSleep(400);
+    vexSleep(300);
     driveFB(0);
     vexSleep(100);
-    driveFB(-80);
+    driveFB(-100);
     vexSleep(600);
+    driveFB(5);
+    vexSleep(50);
+    driveFB(0);
+    vexSleep(250);
+    turnRight(45);
+    vexSleep(800);
+    turnLeft(5);
+    vexSleep(50);
     driveFB(0);
 }
 
@@ -89,11 +97,19 @@ void autoRight(void)
     vexSleep(200);
     setLift(0);
     driveFB(80);
-    vexSleep(400);
+    vexSleep(300);
     driveFB(0);
     vexSleep(100);
-    driveFB(-80);
+    driveFB(-100);
     vexSleep(600);
+    driveFB(5);
+    vexSleep(50);
+    driveFB(0);
+    vexSleep(250);
+    turnLeft(45);
+    vexSleep(800);
+    turnRight(5);
+    vexSleep(50);
     driveFB(0);
 }
 
