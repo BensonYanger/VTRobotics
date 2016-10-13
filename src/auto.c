@@ -10,6 +10,24 @@ void driveFB(int drive)
     vexMotorSet(kVexMotor_6, drive);
 }
 
+void turnLeft(int drive)
+{
+    vexMotorSet(kVexMotor_4, -drive);
+    vexMotorSet(kVexMotor_7, -drive);
+
+    vexMotorSet(kVexMotor_5, drive);
+    vexMotorSet(kVexMotor_6, drive);
+}
+
+void turnRight(int drive)
+{
+    vexMotorSet(kVexMotor_4, drive);
+    vexMotorSet(kVexMotor_7, drive);
+
+    vexMotorSet(kVexMotor_5, -drive);
+    vexMotorSet(kVexMotor_6, -drive);
+}
+
 void setLift(int lift)
 {
     vexMotorSet(kVexMotor_2, lift);
@@ -17,6 +35,46 @@ void setLift(int lift)
     vexMotorSet(kVexMotor_8, lift);
     vexMotorSet(kVexMotor_9, lift);
 }
+
+//bring it all down in one motion..?
+void startAuto(void)
+{
+    driveFB(127);
+    vexSleep(200);
+    setLift(127);
+    vexSleep(400);
+    driveFB(0);
+    setLift(0);
+    vexSleep(100);
+    driveFB(-100);
+    setLift(-100);
+    vexSleep(400);
+    driveFB(0);
+    setLift(0);
+}
+
+void autoLeft(void)
+{
+    turnRight(30);
+    vexSleep(400);
+    driveFB(0);
+    vexSleep(100);
+    driveFB(80);
+    vexSleep(100);
+    setLift(127);
+    vexSleep(700);
+    driveFB(0);
+    vexSleep(200);
+    setLift(0);
+    driveFB(80);
+    vexSleep(400);
+    driveFB(0);
+    vexSleep(100);
+    driveFB(-80);
+    vexSleep(600);
+    driveFB(0);
+}
+
 
 
 /*-----------------------------------------------------------------------------*/
@@ -35,20 +93,8 @@ vexAutonomous( void *arg )
 
     while(1)
         {
-            driveFB(127);
-            vexSleep(750);
-            driveFB(0);
-            vexSleep(150);
-            driveFB(-127);
-            vexSleep(500);
-            driveFB(0);
-            setLift(127);
-            vexSleep(500);
-            setLift(0);
-            vexSleep(150);
-            setLift(-127);
-            vexSleep(350);
-            setLift(0);
+            startAuto();
+            autoLeft();
             vexSleep(12500);
             // Don't hog cpu
             vexSleep( 25 );
