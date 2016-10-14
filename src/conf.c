@@ -22,7 +22,7 @@ static  vexMotorCfg mConfig[kVexMotorNum] = {
         { kVexMotor_1,      kVexMotor393S,           kVexMotorNormal,       kVexSensorNone,        0 },
         { kVexMotor_2,      kVexMotor393S,           kVexMotorNormal,       kVexSensorNone,        0 },
         { kVexMotor_3,      kVexMotor393S,           kVexMotorNormal,       kVexSensorNone,        0 },
-        { kVexMotor_4,      kVexMotor393S,           kVexMotorReversed,       kVexSensorNone,        0 },
+        { kVexMotor_4,      kVexMotor393S,           kVexMotorReversed,     kVexSensorQuadEncoder,   kVexQuadEncoder_1 },
         { kVexMotor_5,      kVexMotor393S,           kVexMotorReversed,       kVexSensorNone,        0 },
         { kVexMotor_6,      kVexMotor393S,           kVexMotorReversed,       kVexSensorNone,        0 },
         { kVexMotor_7,      kVexMotor393S,           kVexMotorNormal,       kVexSensorNone,        0 },

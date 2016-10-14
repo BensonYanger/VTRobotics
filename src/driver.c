@@ -35,9 +35,9 @@ vexOperator( void *arg )
 
 		// status on LCD of encoder and sonar
 		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_1, "%4.2fV   %8.1f", vexSpiGetMainBattery() / 1000.0, chTimeNow() / 1000.0 );
-		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_2, "L %3d R %3d", vexMotorGet( kVexMotor_1 ), vexMotorGet( kVexMotor_10 ) );
+		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_2, "Enc %6d", vexEncoderGet(kVexQuadEncoder_1));
 
-		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "P %3d LT %3d", vexAdcGet(1), vexAdcGet(2));
+		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "P %4d LT %4d", vexAdcGet(1), vexAdcGet(2));
 		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "");
 
 		if(vexControllerGet(Btn8D) && armLock == 0) {

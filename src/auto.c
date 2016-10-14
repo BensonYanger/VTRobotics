@@ -40,12 +40,12 @@ void setLift(int lift)
 void startAuto(void)
 {
     driveFB(127);
-    vexSleep(800);
+    vexSleep(1000);
     driveFB(0);
     setLift(0);
     vexSleep(100);
     driveFB(-100);
-    vexSleep(600);
+    vexSleep(800);
     driveFB(0);
     setLift(0);
     vexSleep(500);
