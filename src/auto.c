@@ -41,13 +41,14 @@ void startAuto(void)
 {
     driveFB(127);
     vexSleep(300);
-    setLift(127);
+    //setLift(127);
     vexSleep(500);
     driveFB(0);
     setLift(0);
     vexSleep(100);
     driveFB(-100);
-    setLift(-100);
+    vexSleep(200);
+    //setLift(-100);
     vexSleep(400);
     driveFB(0);
     setLift(0);
@@ -55,14 +56,14 @@ void startAuto(void)
 
 void autoLeft(void)
 {
-    turnLeft(30);
+    turnLeft(25);
     vexSleep(400);
     driveFB(0);
     vexSleep(100);
-    driveFB(80);
-    vexSleep(100);
-    setLift(127);
-    vexSleep(700);
+    driveFB(75);
+    vexSleep(400);
+    setLift(110);
+    vexSleep(400);
     driveFB(0);
     vexSleep(200);
     setLift(0);
@@ -76,23 +77,32 @@ void autoLeft(void)
     vexSleep(50);
     driveFB(0);
     vexSleep(250);
-    turnRight(45);
-    vexSleep(800);
+    turnRight(40);
+    vexSleep(500);
+    setLift(-127);
+    vexSleep(300);
     turnLeft(5);
     vexSleep(50);
     driveFB(0);
+    vexSleep(500);
+    driveFB(60);
+    vexSleep(300);
+    setLift(127);
+    vexSleep(400);
+    driveFB(0);
+    setLift(0);
 }
 
 void autoRight(void)
 {
-    turnRight(30);
+    turnRight(25);
     vexSleep(400);
     driveFB(0);
     vexSleep(100);
-    driveFB(80);
-    vexSleep(100);
-    setLift(127);
-    vexSleep(700);
+    driveFB(75);
+    vexSleep(400);
+    setLift(110);
+    vexSleep(400);
     driveFB(0);
     vexSleep(200);
     setLift(0);
@@ -106,11 +116,20 @@ void autoRight(void)
     vexSleep(50);
     driveFB(0);
     vexSleep(250);
-    turnLeft(45);
-    vexSleep(800);
+    turnLeft(40);
+    vexSleep(500);
+    setLift(-127);
+    vexSleep(300);
     turnRight(5);
     vexSleep(50);
     driveFB(0);
+    vexSleep(500);
+    driveFB(60);
+    vexSleep(300);
+    setLift(127);
+    vexSleep(400);
+    driveFB(0);
+    setLift(0);
 }
 
 /*-----------------------------------------------------------------------------*/
