@@ -190,7 +190,10 @@ vexAutonomous( void *arg )
             else if(auton == 3) {
                 autoRight();
             }
-            vexSleep(12500);
+            else if(auton == 4) {
+                vexSleep(5000);
+            }
+            vexSleep(10000);
             // Don't hog cpu
             vexSleep( 25 );
         }

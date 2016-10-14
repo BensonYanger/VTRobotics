@@ -18,7 +18,7 @@ lcdAuto(void *arg) {
     lcdMenu lcdmenu;
     lcdmenu.page = 1;
     lcdmenu.pageMin = 1;
-    lcdmenu.pageMax = 3;
+    lcdmenu.pageMax = 4;
 
     //testing
     while(true) {
@@ -81,12 +81,24 @@ lcdAuto(void *arg) {
             } else if(lcdmenu.page == 3 && auton == 3) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      [3]       ");
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "     right      ");
+            } else if(lcdmenu.page == 4 && auton != 4) {
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "       4        ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "    fork out    ");
+                 if(vexLcdButtonGet(VEX_LCD_DISPLAY_1) == 2) {
+                    vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, " Autonomous Has ");
+                    vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " Been Selected! ");
+                    auton = 4;
+                    vexSleep(500);
+                }
+            } else if(lcdmenu.page == 4 && auton == 4) {
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      [4]       ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "    fork out    ");
             }
         }
         
 
         // give CPU time
-        vexSleep(20);
+        vexSleep(25);
     }
 
     return (msg_t)0;
