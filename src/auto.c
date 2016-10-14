@@ -184,7 +184,7 @@ vexAutonomous( void *arg )
             if(auton == 1) {
                 autoStraight();
             }
-            if(auton == 2) {
+            else if(auton == 2) {
                 autoLeft();
             }
             else if(auton == 3) {
