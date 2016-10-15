@@ -3,6 +3,7 @@
 #include "driver.h"
 
 #include "drive.h"
+#include "audio.h"
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      Driver control                                                 */
@@ -15,6 +16,7 @@ msg_t
 vexOperator( void *arg )
 {
 	startTankDrive();
+	startSpeakerPress();
 
 	int16_t		blink = 0;
 

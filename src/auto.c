@@ -75,7 +75,7 @@ void autoLeft(void) {
     driveFB(0);
     vexSleep(300);
     //phase 3
-    turnRight(40);
+    turnRight(45);
     vexSleep(800);
     turnLeft(5);
     vexSleep(300);

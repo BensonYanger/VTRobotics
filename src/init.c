@@ -4,6 +4,7 @@
 
 #include "drive.h"
 #include "lcd.h"
+#include "audio.h"
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      User initialize                                                */
@@ -18,5 +19,6 @@ void
 vexUserInit()
 {
     startLcdAuto();
+    //startSpeakerSong();
     //startTankDrive();
 }
