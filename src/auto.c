@@ -75,20 +75,20 @@ void autoLeft(void) {
     driveFB(0);
     vexSleep(300);
     //phase 3
-    turnRight(45);
+    turnRight(35);
     vexSleep(800);
     turnLeft(5);
     vexSleep(300);
     driveFB(0);
     vexSleep(500);
     driveFB(60);
-    vexSleep(700);
+    vexSleep(1300);
     driveFB(0);
     setLift(0);
     vexSleep(500);
     //Phase 4
     driveFB(-60);
-    vexSleep(700);
+    vexSleep(1200);
     driveFB(0);
     turnLeft(40);
     vexSleep(300);
