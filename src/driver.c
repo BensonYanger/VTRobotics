@@ -15,7 +15,7 @@
 msg_t
 vexOperator( void *arg )
 {
-	startTankDrive();
+	startxDrive();
 	startSpeakerPress();
 
 	int16_t		blink = 0;

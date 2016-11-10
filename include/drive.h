@@ -9,6 +9,8 @@ extern "C" {
 
 msg_t tankDrive(void *arg);
 int startTankDrive(void);
+msg_t xDrive(void *arg);
+int startxDrive(void);
 
 #ifdef __cplusplus
 }
