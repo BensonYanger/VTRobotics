@@ -42,47 +42,15 @@ vexOperator( void *arg )
 		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "P %4d LT %4d", vexAdcGet(1), vexAdcGet(2));
 		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "");
 
-		if(vexControllerGet(Btn8D) && armLock == 0) {
-			armLock = 1;
-		} else if(vexControllerGet(Btn8D) && armLock == 1) {
-			armLock = 0;
-		}
-
-		//armlock led
-		if(armLock) {
-			vexDigitalPinSet(kVexDigital_10, (blink++ >> 2) & 1);
-		}
-
 		if(vexControllerGet(Btn6U)) {
-			vexMotorSet(kVexMotor_2, 127);
 			vexMotorSet(kVexMotor_3, 127);
 			vexMotorSet(kVexMotor_8, 127);
-			vexMotorSet(kVexMotor_9, 127);
 		} else if (vexControllerGet(Btn6D)) {
-			vexMotorSet(kVexMotor_2, -127);
 			vexMotorSet(kVexMotor_3, -127);
 			vexMotorSet(kVexMotor_8, -127);
-			vexMotorSet(kVexMotor_9, -127);
-		} else if(vexControllerGet(Btn5U)) {
-			vexMotorSet(kVexMotor_2, 60);
-			vexMotorSet(kVexMotor_3, 60);
-			vexMotorSet(kVexMotor_8, 60);
-			vexMotorSet(kVexMotor_9, 60);
-		} else if (vexControllerGet(Btn5D)) {
-			vexMotorSet(kVexMotor_2, -60);
-			vexMotorSet(kVexMotor_3, -60);
-			vexMotorSet(kVexMotor_8, -60);
-			vexMotorSet(kVexMotor_9, -60);
-		} else if (armLock) {
-			vexMotorSet(kVexMotor_2, 10);
-			vexMotorSet(kVexMotor_3, 10);
-			vexMotorSet(kVexMotor_8, 10);
-			vexMotorSet(kVexMotor_9, 10);
 		} else {
-			vexMotorSet(kVexMotor_2, 0);
 			vexMotorSet(kVexMotor_3, 0);
 			vexMotorSet(kVexMotor_8, 0);
-			vexMotorSet(kVexMotor_9, 0);
 		}
 
 		if(vexWatchdogResetFlagGet()) {

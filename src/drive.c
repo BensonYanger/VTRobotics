@@ -53,18 +53,24 @@ xDrive(void *arg)
         joyRy = vexControllerGet(Ch2);
         joyRx = vexControllerGet(Ch1);
 
-        if(abs(joyLy) > 12) {
+        if(abs(joyLy) > 15) {
             vexMotorSet(kVexMotor_4, joyLy);
             vexMotorSet(kVexMotor_6, joyLy);
 
             vexMotorSet(kVexMotor_5, joyLy);
             vexMotorSet(kVexMotor_7, joyLy);
-        } else if(abs(joyLx) > 12) {
+        } else if(abs(joyLx) > 15) {
             vexMotorSet(kVexMotor_4, joyLx);
             vexMotorSet(kVexMotor_6, joyLx);
             
             vexMotorSet(kVexMotor_5, -joyLx);
             vexMotorSet(kVexMotor_7, -joyLx);
+        } else if(abs(joyRx) > 15) {
+            vexMotorSet(kVexMotor_4, joyRx);
+            vexMotorSet(kVexMotor_6, -joyRx);
+            
+            vexMotorSet(kVexMotor_5, -joyRx);
+            vexMotorSet(kVexMotor_7, joyRx);
         } else {
             vexMotorSet(kVexMotor_4, 0);
             vexMotorSet(kVexMotor_6, 0);
