@@ -53,6 +53,17 @@ vexOperator( void *arg )
 			vexMotorSet(kVexMotor_8, 0);
 		}
 
+		if(vexControllerGet(Btn5U)) {
+			vexMotorSet(kVexMotor_2, 127);
+			vexMotorSet(kVexMotor_9, 127);
+		} else if (vexControllerGet(Btn5D)) {
+			vexMotorSet(kVexMotor_2, -127);
+			vexMotorSet(kVexMotor_9, -127);
+		} else {
+			vexMotorSet(kVexMotor_2, 0);
+			vexMotorSet(kVexMotor_9, 0);
+		}
+
 		if(vexWatchdogResetFlagGet()) {
 			vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " Watchdog Reset ");
 		}
