@@ -25,7 +25,7 @@ speakerPress(void *arg)
         if(vexControllerGet(Btn7U)) {
             vexAudioPlayRtttl(Flinstones, 128, 0);
         }
-        if(vexControllerGet(Btn8U)) {
+        if(vexControllerGet(Btn7R)) {
             vexAudioPlayRtttl(Mario, 128, 0);
         }
         if(vexControllerGet(Btn7L)) {

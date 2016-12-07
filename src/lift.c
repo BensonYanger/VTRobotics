@@ -19,6 +19,14 @@ liftTask(void* arg)
     {
         liftPosition = vexAdcGet(1);
 
+        if(vexControllerGet(Btn8U)) {
+            liftTarget = 3000;
+        } else if (vexControllerGet(Btn8R)) {
+            liftTarget = 2300;
+        } else if (vexControllerGet(Btn8R)) {
+            liftTarget = 900;
+        }
+
         if(liftPosition + 50 < liftTarget) {
             vexMotorSet(kVexMotor_3, 127);
             vexMotorSet(kVexMotor_7, 127);
