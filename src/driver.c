@@ -43,6 +43,7 @@ vexOperator( void *arg )
 		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "P %4d LT %4d", vexAdcGet(1), vexAdcGet(2));
 		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "");
 
+		/* CLAW ARM */
 		if(vexControllerGet(Btn6U)) {
 			vexMotorSet(kVexMotor_2, 127);
 			vexMotorSet(kVexMotor_9, 127);
@@ -54,6 +55,7 @@ vexOperator( void *arg )
 			vexMotorSet(kVexMotor_9, 0);
 		}
 
+		/* CLAW */
 		if(vexControllerGet(Btn5U)) {
 			vexMotorSet(kVexMotor_1, 127);
 			vexMotorSet(kVexMotor_10, 127);

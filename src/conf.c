@@ -4,9 +4,9 @@
 
 // Digi IO configuration
 static  vexDigiCfg  dConfig[kVexDigital_Num] = {
-        { kVexDigital_1,    kVexSensorDigitalInput,  kVexConfigInput,      0 },
-        { kVexDigital_2,    kVexSensorDigitalInput,  kVexConfigInput,      0 },
-        { kVexDigital_3,    kVexSensorDigitalInput,  kVexConfigInput,      0 },
+        { kVexDigital_1,    kVexSensorDigitalOutput,  kVexConfigOutput,      0 },
+        { kVexDigital_2,    kVexSensorDigitalOutput,  kVexConfigOutput,      0 },
+        { kVexDigital_3,    kVexSensorDigitalOutput,  kVexConfigOutput,      0 },
         { kVexDigital_4,    kVexSensorDigitalInput,  kVexConfigInput,      0 },
         { kVexDigital_5,    kVexSensorDigitalInput,  kVexConfigInput,      0 },
         { kVexDigital_6,    kVexSensorQuadEncoder,  kVexConfigQuadEnc1,      kVexQuadEncoder_1 },
