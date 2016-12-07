@@ -3,6 +3,8 @@
 #include "auto.h"
 #include "lcd.h"
 
+#include "lift.h"
+
 void driveFB(int drive)
 {
     vexMotorSet(kVexMotor_4, drive);

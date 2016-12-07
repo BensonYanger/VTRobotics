@@ -5,7 +5,11 @@
 extern "C" {
 #endif
 
+extern int16_t liftPosition;
+extern int16_t liftTarget;
 
+msg_t liftTask(void *arg);
+int startLiftTask(void);
 
 #ifdef __cplusplus
 }

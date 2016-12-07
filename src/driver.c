@@ -4,6 +4,7 @@
 
 #include "drive.h"
 #include "audio.h"
+#include "lift.h"
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      Driver control                                                 */
@@ -18,9 +19,9 @@ vexOperator( void *arg )
 	startxDrive();
 	startSpeakerPress();
 
-	int16_t		blink = 0;
+	int16_t blink = 0;
 
-	int16_t		armLock = 0;
+	int16_t	armLock = 0;
 
 	(void)arg;
 
