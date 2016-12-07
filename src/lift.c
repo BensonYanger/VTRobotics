@@ -7,7 +7,7 @@ int16_t liftTarget = 900;
 
 static WORKING_AREA(waLiftTask, 512);
 msg_t
-liftTask(void* arg)
+liftTask(void *arg)
 {
     (void)arg;
 
