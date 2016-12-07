@@ -19,7 +19,7 @@ static  vexDigiCfg  dConfig[kVexDigital_Num] = {
 };
 
 static  vexMotorCfg mConfig[kVexMotorNum] = {
-        { kVexMotor_1,      kVexMotor393S,           kVexMotorNormal,       kVexSensorNone,        0 },
+        { kVexMotor_1,      kVexMotor393T,           kVexMotorNormal,       kVexSensorNone,        0 },
         { kVexMotor_2,      kVexMotor393T,           kVexMotorNormal,       kVexSensorNone,        0 },
         { kVexMotor_3,      kVexMotor393T,           kVexMotorNormal,       kVexSensorNone,        0 },
         { kVexMotor_4,      kVexMotor393S,           kVexMotorNormal,       kVexSensorNone,        0 },
@@ -28,7 +28,7 @@ static  vexMotorCfg mConfig[kVexMotorNum] = {
         { kVexMotor_7,      kVexMotor393S,           kVexMotorNormal,       kVexSensorNone,        0 },
         { kVexMotor_8,      kVexMotor393T,           kVexMotorReversed,       kVexSensorNone,        0 },
         { kVexMotor_9,      kVexMotor393T,           kVexMotorReversed,       kVexSensorNone,        0 },
-        { kVexMotor_10,     kVexMotor393S,           kVexMotorNormal,       kVexSensorNone,        0 }
+        { kVexMotor_10,     kVexMotor393T,           kVexMotorReversed,       kVexSensorNone,        0 }
 };
 
 
