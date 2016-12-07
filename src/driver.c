@@ -69,6 +69,7 @@ vexOperator( void *arg )
 			vexMotorSet(kVexMotor_10, 0);
 		}
 
+		/* Check for IDWG resets */
 		if(vexWatchdogResetFlagGet()) {
 			vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " Watchdog Reset ");
 		}
