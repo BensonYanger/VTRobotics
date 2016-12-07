@@ -23,8 +23,10 @@ liftTask(void *arg)
             liftTarget = 3000;
         } else if (vexControllerGet(Btn8R)) {
             liftTarget = 2300;
-        } else if (vexControllerGet(Btn8R)) {
+        } else if (vexControllerGet(Btn8D)) {
             liftTarget = 900;
+        } else if (vexControllerGet(Btn8L)) {
+            liftTarget = 725;
         }
 
         if(liftPosition + 50 < liftTarget) {
