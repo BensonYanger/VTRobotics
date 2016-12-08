@@ -75,7 +75,7 @@ xDrive(void *arg)
         joyRy = vexControllerGet(Ch2);
         joyRx = vexControllerGet(Ch1);
 
-        if(abs(joyLy) > 10) {
+        if(abs(joyLy) > 10 && abs(joyLx) < abs(joyLy)) {
             vexMotorSet(kVexMotor_4, trueSpeedS(joyLy));
             vexMotorSet(kVexMotor_6, trueSpeedS(joyLy));
 
