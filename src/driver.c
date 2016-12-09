@@ -18,6 +18,7 @@ vexOperator( void *arg )
 {
 	startxDrive();
 	startSpeakerPress();
+	startLiftTask();
 
 	int16_t blinkr = 0;
 	int16_t blinky = 0;
@@ -40,10 +41,10 @@ vexOperator( void *arg )
 
 		// status on LCD of encoder and sonar
 		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_1, "%4.2fV   %8.1f", vexSpiGetMainBattery() / 1000.0, chTimeNow() / 1000.0 );
-		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_2, "Enc %6d", vexEncoderGet(kVexQuadEncoder_1));
+		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_2, "L %6d", vexEncoderGet(kVexQuadEncoder_3));
 
 		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "P %4d LT %4d", vexAdcGet(1), vexAdcGet(2));
-		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "");
+		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "1 %4d 2 %4d", vexEncoderGet(kVexQuadEncoder_1), vexEncoderGet(kVexQuadEncoder_2));
 
 		/* CLAW ARM */
 		if(vexControllerGet(Btn6U)) {

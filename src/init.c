@@ -20,5 +20,5 @@ void
 vexUserInit()
 {
     startLcdAuto();
-    startLiftTask();
+	//startLiftTask();
 }

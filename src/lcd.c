@@ -4,7 +4,7 @@
 
 static WORKING_AREA(waLcdAuto, 512);
 
-int auton = 3;
+int auton;
 
 msg_t
 lcdAuto(void *arg) {
