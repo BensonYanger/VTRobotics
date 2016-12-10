@@ -4,7 +4,7 @@
 
 static WORKING_AREA(waLcdAuto, 512);
 
-int auton;
+int auton = 0;
 
 msg_t
 lcdAuto(void *arg) {
@@ -18,12 +18,10 @@ lcdAuto(void *arg) {
     lcdMenu lcdmenu;
     lcdmenu.page = 1;
     lcdmenu.pageMin = 1;
-    lcdmenu.pageMax = 3;
+    lcdmenu.pageMax = 5;
 
     //testing
     while(true) {
-        //if((vexControllerCompetitonState() & kFlagDisabled) == kFlagDisabled) {
-    //while((vexControllerCompetitonState() & kFlagDisabled) == kFlagDisabled) {
         if((vexControllerCompetitonState() & kFlagDisabled) == kFlagDisabled)
         {
             if(vexLcdButtonGet(VEX_LCD_DISPLAY_1) == 1) {
@@ -71,7 +69,7 @@ lcdAuto(void *arg) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "     right      ");
             } else if(lcdmenu.page == 3 && auton != 3) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "       3        ");
-                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "    fork out    ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " right sans cube");
                  if(vexLcdButtonGet(VEX_LCD_DISPLAY_1) == 2) {
                     vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, " Autonomous Has ");
                     vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " Been Selected! ");
@@ -80,7 +78,31 @@ lcdAuto(void *arg) {
                 }
             } else if(lcdmenu.page == 3 && auton == 3) {
                 vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      [3]       ");
-                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "    fork out    ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " right sans cube");
+            } else if(lcdmenu.page == 4 && auton != 4) {
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "       4        ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " left sans cube ");
+                 if(vexLcdButtonGet(VEX_LCD_DISPLAY_1) == 2) {
+                    vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, " Autonomous Has ");
+                    vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " Been Selected! ");
+                    auton = 4;
+                    vexSleep(500);
+                }
+            } else if(lcdmenu.page == 4 && auton == 4) {
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      [4]       ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " left sans cube ");
+            } else if(lcdmenu.page == 5 && auton != 5) {
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "       5        ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "    claw out    ");
+                 if(vexLcdButtonGet(VEX_LCD_DISPLAY_1) == 2) {
+                    vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, " Autonomous Has ");
+                    vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, " Been Selected! ");
+                    auton = 5;
+                    vexSleep(500);
+                }
+            } else if(lcdmenu.page == 5 && auton == 5) {
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "      [5]       ");
+                vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "    claw out    ");
             }
         }
         

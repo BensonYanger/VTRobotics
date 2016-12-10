@@ -63,6 +63,166 @@ void autoLeft(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -400)
+    {
+        driveLR(60);
+        vexSleep(20);
+    }
+    driveLR(0);
+    setClaw(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    {
+        driveFB(-60);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 150)
+    {
+        driveFB(60);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 850)
+    {
+        driveLR(-60);
+        vexSleep(20);
+    }
+    driveLR(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    {
+        driveFB(-60);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 150)
+    {
+        driveFB(60);
+        vexSleep(20);
+    }
+    liftTarget = 850;
+    driveFB(0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_3) < 40)
+    {
+        setArm(127);
+        vexSleep(20);
+    }
+    setArm(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -165)
+    {
+        turnLR(-50);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -200)
+    {
+        driveFB(-50);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    setClaw(127);
+    vexSleep(1150);
+    setClaw(0);
+    while(vexEncoderGet(kVexQuadEncoder_3) > 10)
+    {
+        setArm(-127);
+        vexSleep(20);
+    }
+    setArm(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 180)
+    {
+        driveFB(50);
+        vexSleep(20);
+    }
+    driveFB(0);
+    setClaw(-127);
+    vexSleep(1250);
+    setClaw(-10);
+    while(vexEncoderGet(kVexQuadEncoder_3) < 40)
+    {
+        setArm(127);
+        vexSleep(20);
+    }
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 165)
+    {
+        turnLR(50);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -300)
+    {
+        driveFB(-60);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(250);
+    setClaw(127);
+    vexSleep(250);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    setClaw(127);
+    while(vexEncoderGet(kVexQuadEncoder_3) < 80)
+    {
+        setArm(127);
+        vexSleep(20);
+    }
+    setArm(0);
+    setClaw(127);
+    vexSleep(1000);
+    setArm(-127);
+    vexSleep(1000);
+    setClaw(-60);
+    vexSleep(1500);
+    setArm(0);
+}
+
+void autoRight(void)
+{
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
     while(vexEncoderGet(kVexQuadEncoder_1) < 400)
     {
         driveLR(-60);
@@ -218,6 +378,169 @@ void autoLeft(void)
     setArm(0);
 }
 
+void autoLeftNoCube(void)
+{
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -400)
+    {
+        driveLR(60);
+        vexSleep(20);
+    }
+    driveLR(0);
+    setClaw(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    {
+        driveFB(-60);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 150)
+    {
+        driveFB(60);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 850)
+    {
+        driveLR(-60);
+        vexSleep(20);
+    }
+    driveLR(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    {
+        driveFB(-60);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 150)
+    {
+        driveFB(60);
+        vexSleep(20);
+    }
+    liftTarget = 850;
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -400)
+    {
+        driveLR(60);
+        vexSleep(20);
+    }
+    driveLR(0);
+    setClaw(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+}
+
+void autoRightNoCube(void)
+{
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 400)
+    {
+        driveLR(-60);
+        vexSleep(20);
+    }
+    driveLR(0);
+    setClaw(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    {
+        driveFB(-60);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 150)
+    {
+        driveFB(60);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -850)
+    {
+        driveLR(60);
+        vexSleep(20);
+    }
+    driveLR(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    {
+        driveFB(-60);
+        vexSleep(20);
+    }
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 150)
+    {
+        driveFB(60);
+        vexSleep(20);
+    }
+    liftTarget = 850;
+    driveFB(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+    while(vexEncoderGet(kVexQuadEncoder_1) < 400)
+    {
+        driveLR(-60);
+        vexSleep(20);
+    }
+    driveLR(0);
+    setClaw(0);
+    vexSleep(100);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    vexSleep(100);
+}
+
 /*-----------------------------------------------------------------------------*/
 /** @brief      Autonomous                                                     */
 /*-----------------------------------------------------------------------------*/
@@ -237,13 +560,22 @@ vexAutonomous( void *arg )
     while(1)
         {
             startAuto();
-            autoLeft();
             switch(auton) {
                 case 1:
+                    autoLeft();
                     break;
                 case 2:
+                    autoRight();
                     break;
                 case 3:
+                    autoLeftNoCube();
+                    break;
+                case 4:
+                    autoRightNoCube();
+                    break;
+                case 5:
+                    break;
+                default:
                     break;
             }
             vexSleep(10000);
