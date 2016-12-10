@@ -27,6 +27,7 @@ vexOperator( void *arg )
 	int16_t blinkg = 0;
 
 	int16_t	armLock = 0;
+	int16_t clawLock = 0;
 
 	(void)arg;
 
@@ -48,6 +49,28 @@ vexOperator( void *arg )
 		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "P %4d LT %4d", vexAdcGet(1), vexAdcGet(2));
 		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "1 %4d 2 %4d", vexEncoderGet(kVexQuadEncoder_1), vexEncoderGet(kVexQuadEncoder_2));
 
+		/* ARM LOCK TOGGLE  */
+		if(vexControllerGet(Btn8L) && armLock == 0) {
+			armLock = 1;
+		} else if(vexControllerGet(Btn8L) && armLock == 1) {
+			armLock = 0;
+		} else if(vexControllerGet(Btn8LXmtr2) && armLock == 0) {
+			armLock = 1;
+		} else if(vexControllerGet(Btn8LXmtr2) && armLock == 1) {
+			armLock = 0;
+		}
+
+		/* CLAW LOCK TOGGLE */
+		if(vexControllerGet(Btn8D) && clawLock == 0) {
+			clawLock = 1;
+		} else if(vexControllerGet(Btn8D) && clawLock == 1) {
+			clawLock = 0;
+		} else if(vexControllerGet(Btn8DXmtr2) && clawLock == 0) {
+			clawLock = 1;
+		} else if(vexControllerGet(Btn8DXmtr2) && clawLock == 1) {
+			clawLock = 0;
+		}
+
 		/* CLAW ARM */
 		if(vexControllerGet(Btn6U)) {
 			vexMotorSet(kVexMotor_2, 127);
@@ -55,6 +78,17 @@ vexOperator( void *arg )
 		} else if (vexControllerGet(Btn6D)) {
 			vexMotorSet(kVexMotor_2, -127);
 			vexMotorSet(kVexMotor_9, -127);
+		/* XMTR 2 */
+		} else if (vexControllerGet(Btn6DXmtr2)) {
+			vexMotorSet(kVexMotor_2, -127);
+			vexMotorSet(kVexMotor_9, -127);
+		} else if (vexControllerGet(Btn6DXmtr2)) {
+			vexMotorSet(kVexMotor_2, -127);
+			vexMotorSet(kVexMotor_9, -127);
+		/* ARM LOCK */
+		} else if (armLock == 1) {
+			vexMotorSet(kVexMotor_2, 15);
+			vexMotorSet(kVexMotor_9, 15);
 		} else {
 			vexMotorSet(kVexMotor_2, 0);
 			vexMotorSet(kVexMotor_9, 0);
@@ -67,33 +101,20 @@ vexOperator( void *arg )
 		} else if (vexControllerGet(Btn5D)) {
 			vexMotorSet(kVexMotor_1, -127);
 			vexMotorSet(kVexMotor_10, -127);
-		} else {
-			vexMotorSet(kVexMotor_1, 0);
-			vexMotorSet(kVexMotor_10, 0);
-		}
-
-		/* CLAW XMTR 2*/
-		if(vexControllerGet(Btn5UXmtr2)) {
+		/* XMTR 2 */
+		} else if (vexControllerGet(Btn5DXmtr2)) {
 			vexMotorSet(kVexMotor_1, 127);
 			vexMotorSet(kVexMotor_10, 127);
 		} else if (vexControllerGet(Btn5DXmtr2)) {
 			vexMotorSet(kVexMotor_1, -127);
 			vexMotorSet(kVexMotor_10, -127);
+		/* CLAW LOCK */
+		} else if (clawLock == 1) {
+			vexMotorSet(kVexMotor_1, -15);
+			vexMotorSet(kVexMotor_10, -15);
 		} else {
 			vexMotorSet(kVexMotor_1, 0);
 			vexMotorSet(kVexMotor_10, 0);
-		}
-		
-		/* CLAW ARM XMTR 2*/
-		if(vexControllerGet(Btn6UXmtr2)) {
-			vexMotorSet(kVexMotor_2, 127);
-			vexMotorSet(kVexMotor_9, 127);
-		} else if (vexControllerGet(Btn6DXmtr2)) {
-			vexMotorSet(kVexMotor_2, -127);
-			vexMotorSet(kVexMotor_9, -127);
-		} else {
-			vexMotorSet(kVexMotor_2, 0);
-			vexMotorSet(kVexMotor_9, 0);
 		}
 
 		/* Check for IDWG resets */
