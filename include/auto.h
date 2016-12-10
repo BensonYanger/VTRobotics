@@ -5,7 +5,11 @@
 extern "C" {
 #endif
 
-
+void driveFB(int16_t drive);
+void driveLR(int16_t drive);
+void turnLR(int16_t drive);
+void setArm(int16_t lift);
+void setClaw(int16_t claw);
 
 #ifdef __cplusplus
 }
