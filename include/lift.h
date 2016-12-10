@@ -8,6 +8,8 @@ extern "C" {
 extern int16_t liftPosition;
 extern int16_t liftTarget;
 
+extern int16_t liftFlag;
+
 msg_t liftTask(void *arg);
 int startLiftTask(void);
 

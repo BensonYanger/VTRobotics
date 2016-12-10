@@ -34,6 +34,19 @@ speakerPress(void *arg)
         if(vexControllerGet(Btn7D)) {
             vexAudioPlayRtttl(StarWars, 128, 0);
         }
+
+        if(vexControllerGet(Btn7UXmtr2)) {
+            vexAudioPlayRtttl(Flinstones, 128, 0);
+        }
+        if(vexControllerGet(Btn7RXmtr2)) {
+            vexAudioPlayRtttl(Mario, 128, 0);
+        }
+        if(vexControllerGet(Btn7LXmtr2)) {
+            vexAudioPlayRtttl(Zelda, 128, 0);
+        }
+        if(vexControllerGet(Btn7DXmtr2)) {
+            vexAudioPlayRtttl(StarWars, 128, 0);
+        }
         
         vexSleep(25);
     }

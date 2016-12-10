@@ -18,7 +18,9 @@ vexOperator( void *arg )
 {
 	startxDrive();
 	startSpeakerPress();
+	//lift to be manual in driver
 	startLiftTask();
+	liftFlag = 1;
 
 	int16_t blinkr = 0;
 	int16_t blinky = 0;
@@ -68,6 +70,30 @@ vexOperator( void *arg )
 		} else {
 			vexMotorSet(kVexMotor_1, 0);
 			vexMotorSet(kVexMotor_10, 0);
+		}
+
+		/* CLAW XMTR 2*/
+		if(vexControllerGet(Btn5UXmtr2)) {
+			vexMotorSet(kVexMotor_1, 127);
+			vexMotorSet(kVexMotor_10, 127);
+		} else if (vexControllerGet(Btn5DXmtr2)) {
+			vexMotorSet(kVexMotor_1, -127);
+			vexMotorSet(kVexMotor_10, -127);
+		} else {
+			vexMotorSet(kVexMotor_1, 0);
+			vexMotorSet(kVexMotor_10, 0);
+		}
+		
+		/* CLAW ARM XMTR 2*/
+		if(vexControllerGet(Btn6UXmtr2)) {
+			vexMotorSet(kVexMotor_2, 127);
+			vexMotorSet(kVexMotor_9, 127);
+		} else if (vexControllerGet(Btn6DXmtr2)) {
+			vexMotorSet(kVexMotor_2, -127);
+			vexMotorSet(kVexMotor_9, -127);
+		} else {
+			vexMotorSet(kVexMotor_2, 0);
+			vexMotorSet(kVexMotor_9, 0);
 		}
 
 		/* Check for IDWG resets */
