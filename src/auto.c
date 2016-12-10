@@ -60,6 +60,7 @@ void startAuto(void)
 
 void autoLeft(void)
 {
+    //STAGE 1: KNOCK OFF STARS FROM FENCE
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
@@ -119,6 +120,7 @@ void autoLeft(void)
         driveFB(60);
         vexSleep(20);
     }
+    //STAGE 2: GO FOR THE CUBE
     liftTarget = 850;
     driveFB(0);
     vexSleep(100);
@@ -195,6 +197,7 @@ void autoLeft(void)
         driveFB(-60);
         vexSleep(20);
     }
+    //STAGE 3: DUMP CUBE
     driveFB(0);
     vexSleep(250);
     setClaw(127);
@@ -220,6 +223,7 @@ void autoLeft(void)
 
 void autoRight(void)
 {
+    //STAGE 1: KNOCK OFF STARS FROM FENCE
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
@@ -279,6 +283,7 @@ void autoRight(void)
         driveFB(60);
         vexSleep(20);
     }
+    //STAGE 2: GO FOR THE CUBE
     liftTarget = 850;
     driveFB(0);
     vexSleep(100);
@@ -355,6 +360,7 @@ void autoRight(void)
         driveFB(-60);
         vexSleep(20);
     }
+    //STAGE 3: DUMP CUBE
     driveFB(0);
     vexSleep(250);
     setClaw(127);
@@ -380,6 +386,7 @@ void autoRight(void)
 
 void autoLeftNoCube(void)
 {
+    //STAGE 1: KNOCK OFF STARS FROM FENCE
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
@@ -439,11 +446,9 @@ void autoLeftNoCube(void)
         driveFB(60);
         vexSleep(20);
     }
+    //STAGE 2: MOVE BACK TO OUR SIDE
     liftTarget = 850;
     driveFB(0);
-    vexSleep(100);
-    vexEncoderSet(kVexQuadEncoder_1, 0);
-    vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
@@ -463,6 +468,7 @@ void autoLeftNoCube(void)
 
 void autoRightNoCube(void)
 {
+    //STAGE 1: KNOCK OFF STARS FROM FENCE
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
@@ -522,6 +528,7 @@ void autoRightNoCube(void)
         driveFB(60);
         vexSleep(20);
     }
+    //STAGE 2: MOVE BACK TO OUR SIDE
     liftTarget = 850;
     driveFB(0);
     vexSleep(100);
