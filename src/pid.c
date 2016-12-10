@@ -2,6 +2,8 @@
 
 #include "pid.h"
 
+/*
+
 int liftCounts;
 
 int speedCalc(void) {
@@ -37,3 +39,5 @@ liftPid(void *arg)
 
     return (msg_t)0;
 }
+
+*/
