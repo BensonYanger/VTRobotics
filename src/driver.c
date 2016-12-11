@@ -20,7 +20,6 @@ vexOperator( void *arg )
 	startSpeakerPress();
 	//lift to be manual in driver
 	startLiftTask();
-	liftFlag = 1;
 
 	int16_t blinkr = 0;
 	int16_t blinky = 0;
@@ -37,6 +36,7 @@ vexOperator( void *arg )
 	// Run until asked to terminate
 	while(!chThdShouldTerminate())
 		{
+			liftFlag = 1;
 		// flash led/digi out
 		vexDigitalPinSet( kVexDigital_1, (blinkr++ >> 2) & 1);
 		vexDigitalPinSet( kVexDigital_2, (blinky++ >> 2) & 1);
@@ -46,7 +46,7 @@ vexOperator( void *arg )
 		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_1, "%4.2fV   %8.1f", vexSpiGetMainBattery() / 1000.0, chTimeNow() / 1000.0 );
 		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_2, "L %6d", vexEncoderGet(kVexQuadEncoder_3));
 
-		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "P %4d LT %4d", vexAdcGet(1), vexAdcGet(2));
+		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "P %4d LT %4d", vexAdcGet(1), liftTarget);
 		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "1 %4d 2 %4d", vexEncoderGet(kVexQuadEncoder_1), vexEncoderGet(kVexQuadEncoder_2));
 
 		/* ARM LOCK TOGGLE  */
@@ -79,9 +79,9 @@ vexOperator( void *arg )
 			vexMotorSet(kVexMotor_2, -127);
 			vexMotorSet(kVexMotor_9, -127);
 		/* XMTR 2 */
-		} else if (vexControllerGet(Btn6DXmtr2)) {
-			vexMotorSet(kVexMotor_2, -127);
-			vexMotorSet(kVexMotor_9, -127);
+		} else if (vexControllerGet(Btn6UXmtr2)) {
+			vexMotorSet(kVexMotor_2, 127);
+			vexMotorSet(kVexMotor_9, 127);
 		} else if (vexControllerGet(Btn6DXmtr2)) {
 			vexMotorSet(kVexMotor_2, -127);
 			vexMotorSet(kVexMotor_9, -127);
@@ -102,7 +102,7 @@ vexOperator( void *arg )
 			vexMotorSet(kVexMotor_1, -127);
 			vexMotorSet(kVexMotor_10, -127);
 		/* XMTR 2 */
-		} else if (vexControllerGet(Btn5DXmtr2)) {
+		} else if (vexControllerGet(Btn5UXmtr2)) {
 			vexMotorSet(kVexMotor_1, 127);
 			vexMotorSet(kVexMotor_10, 127);
 		} else if (vexControllerGet(Btn5DXmtr2)) {

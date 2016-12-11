@@ -8,6 +8,7 @@
 void startAuto(void)
 {
     liftTarget = 2350;
+    vexSleep(500);
     driveFB(-120);
     vexSleep(1000);
     driveFB(0);
@@ -37,7 +38,7 @@ void autoLeft(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
-    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    while(vexEncoderGet(kVexQuadEncoder_1) > -200)
     {
         driveFB(-60);
         vexSleep(20);
@@ -67,7 +68,7 @@ void autoLeft(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
-    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    while(vexEncoderGet(kVexQuadEncoder_1) > -300)
     {
         driveFB(-60);
         vexSleep(20);
@@ -107,7 +108,7 @@ void autoLeft(void)
     vexSleep(100);
     while(vexEncoderGet(kVexQuadEncoder_1) > -200)
     {
-        driveFB(-50);
+        driveFB(-60);
         vexSleep(20);
     }
     driveFB(0);
@@ -200,7 +201,7 @@ void autoRight(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
-    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    while(vexEncoderGet(kVexQuadEncoder_1) > -200)
     {
         driveFB(-60);
         vexSleep(20);
@@ -230,7 +231,7 @@ void autoRight(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
-    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    while(vexEncoderGet(kVexQuadEncoder_1) > -300)
     {
         driveFB(-60);
         vexSleep(20);
@@ -270,7 +271,7 @@ void autoRight(void)
     vexSleep(100);
     while(vexEncoderGet(kVexQuadEncoder_1) > -200)
     {
-        driveFB(-50);
+        driveFB(-60);
         vexSleep(20);
     }
     driveFB(0);
@@ -292,7 +293,7 @@ void autoRight(void)
     vexSleep(100);
     while(vexEncoderGet(kVexQuadEncoder_1) < 180)
     {
-        driveFB(50);
+        driveFB(80);
         vexSleep(20);
     }
     driveFB(0);
@@ -319,7 +320,7 @@ void autoRight(void)
     vexSleep(100);
     while(vexEncoderGet(kVexQuadEncoder_1) > -300)
     {
-        driveFB(-60);
+        driveFB(-80);
         vexSleep(20);
     }
     //STAGE 3: DUMP CUBE
@@ -351,8 +352,9 @@ void autoLeftNoCube(void)
     //STAGE 1: KNOCK OFF STARS FROM FENCE
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
+    liftTarget = 2100;
     vexSleep(100);
-    while(vexEncoderGet(kVexQuadEncoder_1) > -400)
+    while(vexEncoderGet(kVexQuadEncoder_1) > -350)
     {
         driveLR(60);
         vexSleep(20);
@@ -363,11 +365,12 @@ void autoLeftNoCube(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
-    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    while(vexEncoderGet(kVexQuadEncoder_1) > -200)
     {
         driveFB(-60);
         vexSleep(20);
     }
+    liftTarget = 2350;
     driveFB(0);
     vexSleep(100);
     vexEncoderSet(kVexQuadEncoder_1, 0);
@@ -383,6 +386,7 @@ void autoLeftNoCube(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
+    liftTarget = 1900;
     while(vexEncoderGet(kVexQuadEncoder_1) < 850)
     {
         driveLR(-60);
@@ -393,7 +397,7 @@ void autoLeftNoCube(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
-    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    while(vexEncoderGet(kVexQuadEncoder_1) > -300)
     {
         driveFB(-60);
         vexSleep(20);
@@ -433,8 +437,9 @@ void autoRightNoCube(void)
     //STAGE 1: KNOCK OFF STARS FROM FENCE
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
+    liftTarget = 2100;
     vexSleep(100);
-    while(vexEncoderGet(kVexQuadEncoder_1) < 400)
+    while(vexEncoderGet(kVexQuadEncoder_1) < 350)
     {
         driveLR(-60);
         vexSleep(20);
@@ -445,11 +450,12 @@ void autoRightNoCube(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
-    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    while(vexEncoderGet(kVexQuadEncoder_1) > -200)
     {
         driveFB(-60);
         vexSleep(20);
     }
+    liftTarget = 2350;
     driveFB(0);
     vexSleep(100);
     vexEncoderSet(kVexQuadEncoder_1, 0);
@@ -465,6 +471,7 @@ void autoRightNoCube(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
+    liftTarget = 1900;
     while(vexEncoderGet(kVexQuadEncoder_1) > -850)
     {
         driveLR(60);
@@ -475,7 +482,7 @@ void autoRightNoCube(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     vexSleep(100);
-    while(vexEncoderGet(kVexQuadEncoder_1) > -180)
+    while(vexEncoderGet(kVexQuadEncoder_1) > -300)
     {
         driveFB(-60);
         vexSleep(20);

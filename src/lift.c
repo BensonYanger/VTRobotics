@@ -22,46 +22,33 @@ liftTask(void *arg)
     {
         liftPosition = vexAdcGet(1);
 
-        if(liftFlag == 0)
-        {
-            if (liftPosition + 90 < liftTarget) {
+            if (liftPosition + 70 < liftTarget) {
                 vexMotorSet(kVexMotor_3, 127);
                 vexMotorSet(kVexMotor_8, 127);
-            } else if (liftPosition - 90 > liftTarget) {
+            } else if (liftPosition - 70 > liftTarget) {
                 vexMotorSet(kVexMotor_3, -127);
                 vexMotorSet(kVexMotor_8, -127);
             } else {
                 vexMotorSet(kVexMotor_3, 0);
                 vexMotorSet(kVexMotor_8, 0);
             }
-        }
-        
-        if(liftFlag == 1)
-        {
-            if(vexControllerGet(Btn8U)) {
-                vexMotorSet(kVexMotor_3, 127);
-                vexMotorSet(kVexMotor_8, 127);
-            } else if (vexControllerGet(Btn8R)) {
-                vexMotorSet(kVexMotor_3, 127);
-                vexMotorSet(kVexMotor_8, 127);
-            } else {
-                vexMotorSet(kVexMotor_3, 0);
-                vexMotorSet(kVexMotor_8, 0);
-            }
 
-            if(vexControllerGet(Btn8UXmtr2)) {
-                vexMotorSet(kVexMotor_3, 127);
-                vexMotorSet(kVexMotor_8, 127);
-            } else if (vexControllerGet(Btn8RXmtr2)) {
-                vexMotorSet(kVexMotor_3, 127);
-                vexMotorSet(kVexMotor_8, 127);
-            } else {
-                vexMotorSet(kVexMotor_3, 0);
-                vexMotorSet(kVexMotor_8, 0);
-            }
+        if(vexControllerGet(Btn8U)) {
+            liftTarget = 2800;
+        } else if (vexControllerGet(Btn8R)) {
+            liftTarget = 800;
+        }
+        if (vexControllerGet(Ch3Xmtr2)) {
+            liftTarget = liftTarget + vexControllerGet(Ch3Xmtr2)/6;
         }
 
-        vexSleep(25);
+        if(liftTarget < 600) {
+            liftTarget = 600;
+        } else if (liftTarget > 2900) {
+            liftTarget = 2900;
+        }
+
+        vexSleep(50);
     }
     
     return (msg_t)0;
