@@ -19,10 +19,6 @@ vexAutonomous( void *arg )
 {
     (void)arg;
 
-    startLiftTask();
-
-    liftFlag = 0;
-
     // Must call this
     vexTaskRegister("auton");
 
