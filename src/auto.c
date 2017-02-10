@@ -7,42 +7,6 @@
 #include "drive.h"
 #include "lift.h"
 
-void driveFB(int16_t drive)
-{
-    vexMotorSet(kVexMotor_4, drive);
-    vexMotorSet(kVexMotor_6, drive);
-    vexMotorSet(kVexMotor_5, drive);
-    vexMotorSet(kVexMotor_7, drive);
-}
-
-void driveLR(int16_t drive)
-{
-    vexMotorSet(kVexMotor_4, drive);
-    vexMotorSet(kVexMotor_6, drive);
-    vexMotorSet(kVexMotor_5, -drive);
-    vexMotorSet(kVexMotor_7, -drive);
-}
-
-void turnLR(int16_t drive)
-{
-    vexMotorSet(kVexMotor_4, drive);
-    vexMotorSet(kVexMotor_6, -drive);
-
-    vexMotorSet(kVexMotor_5, -drive);
-    vexMotorSet(kVexMotor_7, drive);
-}
-
-void setArm(int16_t lift)
-{
-    vexMotorSet(kVexMotor_2, lift);
-    vexMotorSet(kVexMotor_9, lift);
-}
-
-void setClaw(int16_t claw)
-{
-    vexMotorSet(kVexMotor_1, claw);
-    vexMotorSet(kVexMotor_10, claw);
-}
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      Autonomous                                                     */

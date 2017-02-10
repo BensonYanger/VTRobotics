@@ -5,20 +5,56 @@
 
 #include "lift.h"
 
+//a top 3440 bottom 1050
+//c closed 3480 open (180) 1725 flip 540
+
+//360 ticks forward/back/left/right = 1/2 tile
+//300 ticks turn for 45 degree
+
+void driveFB(int16_t drive)
+{
+    vexMotorSet(kVexMotor_4, drive);
+    vexMotorSet(kVexMotor_6, drive);
+    vexMotorSet(kVexMotor_5, drive);
+    vexMotorSet(kVexMotor_7, drive);
+}
+
+void driveLR(int16_t drive)
+{
+    vexMotorSet(kVexMotor_4, drive);
+    vexMotorSet(kVexMotor_6, drive);
+    vexMotorSet(kVexMotor_5, -drive);
+    vexMotorSet(kVexMotor_7, -drive);
+}
+
+void turnLR(int16_t drive)
+{
+    vexMotorSet(kVexMotor_4, drive);
+    vexMotorSet(kVexMotor_6, -drive);
+
+    vexMotorSet(kVexMotor_5, -drive);
+    vexMotorSet(kVexMotor_7, drive);
+}
+
+void setArm(int16_t lift)
+{
+    vexMotorSet(kVexMotor_2, lift);
+    vexMotorSet(kVexMotor_3, lift);
+    vexMotorSet(kVexMotor_8, lift);
+    vexMotorSet(kVexMotor_9, lift);
+}
+
+void setClaw(int16_t claw)
+{
+    vexMotorSet(kVexMotor_1, claw);
+    vexMotorSet(kVexMotor_10, claw);
+}
+
+//-------------------------------
+
 void startAuto(void)
 {
-    liftTarget = 2350;
-    vexSleep(500);
-    driveFB(-120);
-    vexSleep(1000);
-    driveFB(0);
-    vexSleep(100);
-    driveFB(127);
-    vexSleep(500);
-    driveFB(-127);
-    vexSleep(750);
-    driveFB(0);
-    vexSleep(250);
+
 }
 
 void autoLeft(void)

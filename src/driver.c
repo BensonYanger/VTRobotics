@@ -18,8 +18,6 @@ vexOperator( void *arg )
 {
 	startxDrive();
 	startSpeakerPress();
-	//lift to be manual in driver
-	startLiftTask();
 
 	int16_t blinkr = 0;
 	int16_t blinky = 0;
@@ -44,10 +42,10 @@ vexOperator( void *arg )
 
 		// status on LCD of encoder and sonar
 		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_1, "%4.2fV   %8.1f", vexSpiGetMainBattery() / 1000.0, chTimeNow() / 1000.0 );
-		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_2, "L %6d", vexEncoderGet(kVexQuadEncoder_3));
+		vexLcdPrintf( VEX_LCD_DISPLAY_2, VEX_LCD_LINE_2, "LT %4d", vexAdcGet(kVexAnalog_3));
 
-		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "P %4d LT %4d", vexAdcGet(1), liftTarget);
-		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "1 %4d 2 %4d", vexEncoderGet(kVexQuadEncoder_1), vexEncoderGet(kVexQuadEncoder_2));
+		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_1, "A %4d C %4d", vexAdcGet(kVexAnalog_5), vexAdcGet(kVexAnalog_7));
+		vexLcdPrintf(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_2, "L %4d R %4d", vexEncoderGet(kVexQuadEncoder_1), vexEncoderGet(kVexQuadEncoder_2));
 
 		/* ARM LOCK TOGGLE  */
 		if(vexControllerGet(Btn8L) && armLock == 0) {
@@ -74,23 +72,35 @@ vexOperator( void *arg )
 		/* CLAW ARM */
 		if(vexControllerGet(Btn6U)) {
 			vexMotorSet(kVexMotor_2, 127);
+			vexMotorSet(kVexMotor_3, 127);
+			vexMotorSet(kVexMotor_8, 127);
 			vexMotorSet(kVexMotor_9, 127);
 		} else if (vexControllerGet(Btn6D)) {
 			vexMotorSet(kVexMotor_2, -127);
+			vexMotorSet(kVexMotor_3, -127);
+			vexMotorSet(kVexMotor_8, -127);
 			vexMotorSet(kVexMotor_9, -127);
 		/* XMTR 2 */
 		} else if (vexControllerGet(Btn6UXmtr2)) {
 			vexMotorSet(kVexMotor_2, 127);
+			vexMotorSet(kVexMotor_3, 127);
+			vexMotorSet(kVexMotor_8, 127);
 			vexMotorSet(kVexMotor_9, 127);
 		} else if (vexControllerGet(Btn6DXmtr2)) {
 			vexMotorSet(kVexMotor_2, -127);
+			vexMotorSet(kVexMotor_3, 127);
+			vexMotorSet(kVexMotor_8, 127);
 			vexMotorSet(kVexMotor_9, -127);
 		/* ARM LOCK */
 		} else if (armLock == 1) {
 			vexMotorSet(kVexMotor_2, 15);
+			vexMotorSet(kVexMotor_3, 15);
+			vexMotorSet(kVexMotor_8, 15);
 			vexMotorSet(kVexMotor_9, 15);
 		} else {
 			vexMotorSet(kVexMotor_2, 0);
+			vexMotorSet(kVexMotor_3, 0);
+			vexMotorSet(kVexMotor_8, 0);
 			vexMotorSet(kVexMotor_9, 0);
 		}
 
