@@ -50,23 +50,31 @@ vexOperator( void *arg )
 		/* ARM LOCK TOGGLE  */
 		if(vexControllerGet(Btn8L) && armLock == 0) {
 			armLock = 1;
+			vexSleep(75);
 		} else if(vexControllerGet(Btn8L) && armLock == 1) {
 			armLock = 0;
+			vexSleep(75);
 		} else if(vexControllerGet(Btn8LXmtr2) && armLock == 0) {
 			armLock = 1;
+			vexSleep(75);
 		} else if(vexControllerGet(Btn8LXmtr2) && armLock == 1) {
 			armLock = 0;
+			vexSleep(75);
 		}
 
 		/* CLAW LOCK TOGGLE */
 		if(vexControllerGet(Btn8D) && clawLock == 0) {
 			clawLock = 1;
+			vexSleep(75);
 		} else if(vexControllerGet(Btn8D) && clawLock == 1) {
 			clawLock = 0;
+			vexSleep(75);
 		} else if(vexControllerGet(Btn8DXmtr2) && clawLock == 0) {
 			clawLock = 1;
+			vexSleep(75);
 		} else if(vexControllerGet(Btn8DXmtr2) && clawLock == 1) {
 			clawLock = 0;
+			vexSleep(75);
 		}
 
 		/* CLAW ARM */

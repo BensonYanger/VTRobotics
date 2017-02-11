@@ -60,36 +60,55 @@ void setClaw(int16_t claw)
 
 void startAuto(void)
 {
+    //preload
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
-    while(vexAdcGet(clawPot) <= 1725)
+    //close claw and lock
+    while(vexAdcGet(clawPot) <= 3240)
     {
-        setClaw(-80);
+        setClaw(-127);
         vexSleep(25);
     }
-    setClaw(0);
+    setClaw(-15);
+    vexSleep(250);
+    //lift arm slightly and lock
+    while(vexAdcGet(armPot) < 2000)
+    {
+        setArm(127);
+        vexSleep(25);
+    }
+    setArm(15);
 }
 
-void autoLeft(void)
+void autoLeftCorner(void)
 {
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
+    //clear starting tile
     while(vexEncoderGet(driveFRPot) <= 360)
     {
         driveFB(80);
         vexSleep(25);
     }
     driveFB(0);
+    vexSleep(500);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
+    //turn to left corner
     while(vexEncoderGet(driveFRPot) <= 900)
     {
         turnLR(80);
         vexSleep(25);
     }
     turnLR(0);
-    vexEncoderSet(kVexQuadEncoder_1, 0);
-    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //bring arm down
+    while(vexAdcGet(armPot) > 1100)
+    {
+        setArm(-100);
+        vexSleep(25);
+    }
+    setArm(0);
+    //release preload
     if(vexAdcGet(clawPot) >= 1725)
     {
         while(vexAdcGet(clawPot) >= 1725)
@@ -98,49 +117,104 @@ void autoLeft(void)
             vexSleep(25);
         }
     }
-    else if(vexAdcGet(clawPot) <= 1725)
+    else if(vexAdcGet(clawPot) < 1725)
     {
-        while(vexAdcGet(clawPot) <= 1725)
+        while(vexAdcGet(clawPot) < 1725)
         {
             setClaw(-80);
             vexSleep(25);
         }
     }
     setClaw(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //drive to left corner star
     while(vexEncoderGet(driveFRPot) <= 360)
     {
         driveFB(80);
         vexSleep(25);
     }
     driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //grab left corner star
     while(vexAdcGet(clawPot) < 3400)
     {
         setClaw(-127);
         vexSleep(25);
     }
     setClaw(-15);
-}
-
-void autoRight(void)
-{
+    //lift arm up before movement
+    while(vexAdcGet(armPot) < 2000)
+    {
+        setArm(127);
+        vexSleep(25);
+    }
+    setArm(15);
+    vexSleep(500);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
-    while(vexEncoderGet(driveFRPot) <= 360)
+    //back up
+    while(vexEncoderGet(driveFRPot) >= -360)
     {
-        driveFB(80);
+        driveFB(-80);
         vexSleep(25);
     }
     driveFB(0);
+    vexSleep(500);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
+    //turn to fence
     while(vexEncoderGet(driveFRPot) >= -900)
     {
         turnLR(-80);
         vexSleep(25);
     }
     turnLR(0);
+    vexSleep(500);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
+    //back up to fence
+    while(vexEncoderGet(driveFRPot) > -1000)
+    {
+        driveFB(-80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //lift arm
+    while(vexAdcGet(armPot) < 3000)
+    {
+        setArm(127);
+        vexSleep(25);
+    }
+    setArm(96);
+    //open claw
+    while(vexAdcGet(clawPot) > 2000)
+    {
+        setClaw(127);
+        vexSleep(25);
+    }
+    setClaw(0);
+    setArm(0);
+    //clear fence
+    while(vexEncoderGet(driveFRPot) <= 360)
+    {
+        driveFB(80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //lower arm
+    while(vexAdcGet(armPot) > 1200)
+    {
+        setArm(-127);
+        vexSleep(25);
+    }
+    setArm(0);
+    //open claw to 180
     if(vexAdcGet(clawPot) >= 1725)
     {
         while(vexAdcGet(clawPot) >= 1725)
@@ -149,37 +223,349 @@ void autoRight(void)
             vexSleep(25);
         }
     }
-    else if(vexAdcGet(clawPot) <= 1725)
+    else if(vexAdcGet(clawPot) < 1725)
     {
-        while(vexAdcGet(clawPot) <= 1725)
+        while(vexAdcGet(clawPot) < 1725)
         {
             setClaw(-80);
             vexSleep(25);
         }
     }
     setClaw(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+}
+
+void autoRightCorner(void)
+{
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //clear starting tile
     while(vexEncoderGet(driveFRPot) <= 360)
     {
         driveFB(80);
         vexSleep(25);
     }
     driveFB(0);
+    vexSleep(500);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //turn to right corner
+    while(vexEncoderGet(driveFRPot) >= -900)
+    {
+        turnLR(-80);
+        vexSleep(25);
+    }
+    turnLR(0);
+    //bring down arm
+    while(vexAdcGet(armPot) > 1100)
+    {
+        setArm(-100);
+        vexSleep(25);
+    }
+    setArm(0);
+    //release preload
+    if(vexAdcGet(clawPot) >= 1725)
+    {
+        while(vexAdcGet(clawPot) >= 1725)
+        {
+            setClaw(80);
+            vexSleep(25);
+        }
+    }
+    else if(vexAdcGet(clawPot) < 1725)
+    {
+        while(vexAdcGet(clawPot) < 1725)
+        {
+            setClaw(-80);
+            vexSleep(25);
+        }
+    }
+    setClaw(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //drive to right corner star
+    while(vexEncoderGet(driveFRPot) <= 360)
+    {
+        driveFB(80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //grab right corner star
     while(vexAdcGet(clawPot) < 3400)
     {
         setClaw(-127);
         vexSleep(25);
     }
     setClaw(-15);
-}
-
-void autoLeftNoCube(void)
-{
+    //lift arm before movement
+    while(vexAdcGet(armPot) < 2000)
+    {
+        setArm(127);
+        vexSleep(25);
+    }
+    setArm(15);
+    vexSleep(500);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //back up
+    while(vexEncoderGet(driveFRPot) >= -360)
+    {
+        driveFB(-80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexSleep(500);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //turn to fence
+    while(vexEncoderGet(driveFRPot) <= 900)
+    {
+        turnLR(80);
+        vexSleep(25);
+    }
+    turnLR(0);
+    vexSleep(500);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //back up to fence
+    while(vexEncoderGet(driveFRPot) > -1000)
+    {
+        driveFB(-80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //lift arm
+    while(vexAdcGet(armPot) < 3000)
+    {
+        setArm(127);
+        vexSleep(25);
+    }
+    setArm(96);
+    //open claw
+    while(vexAdcGet(clawPot) > 2000)
+    {
+        setClaw(127);
+        vexSleep(25);
+    }
+    setClaw(0);
+    setArm(0);
+    //clear fence
+    while(vexEncoderGet(driveFRPot) <= 360)
+    {
+        driveFB(80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //lower arm
+    while(vexAdcGet(armPot) > 1200)
+    {
+        setArm(-127);
+        vexSleep(25);
+    }
+    setArm(0);
+    //open claw to 180
+    if(vexAdcGet(clawPot) >= 1725)
+    {
+        while(vexAdcGet(clawPot) >= 1725)
+        {
+            setClaw(80);
+            vexSleep(25);
+        }
+    }
+    else if(vexAdcGet(clawPot) < 1725)
+    {
+        while(vexAdcGet(clawPot) < 1725)
+        {
+            setClaw(-80);
+            vexSleep(25);
+        }
+    }
+    setClaw(0);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
 }
 
-void autoRightNoCube(void)
+void autoLeftCube(void)
 {
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
+    //drive 1/2 to cube
+    while(vexEncoderGet(driveFRPot) < 360)
+    {
+        driveFB(80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //bring arm down
+    while(vexAdcGet(armPot) > 1100)
+    {
+        setArm(-100);
+        vexSleep(25);
+    }
+    setArm(0);
+    //release preload
+    while(vexAdcGet(clawPot) > 1725)
+    {
+        setClaw(80);
+        vexSleep(25);
+    }
+    setClaw(0);
+    //drive 2/2 to cube
+    while(vexEncoderGet(driveFRPot) < 360)
+    {
+        driveFB(80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //grab cube and lock
+    while(vexAdcGet(clawPot) <= 3240)
+    {
+        setClaw(-127);
+        vexSleep(25);
+    }
+    setClaw(-15);
+    vexSleep(250);
+    //lift arm slightly and lock
+    while(vexAdcGet(armPot) < 2000)
+    {
+        setArm(127);
+        vexSleep(25);
+    }
+    setArm(15);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //turn towards fence
+    while(vexEncoderGet(driveFRPot) >= -600)
+    {
+        turnLR(-80);
+        vexSleep(25);
+    }
+    turnLR(0);
+    vexSleep(500);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //back up to fence
+    while(vexEncoderGet(driveFRPot) > -1000)
+    {
+        driveFB(-80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //lift arm
+    while(vexAdcGet(armPot) < 3000)
+    {
+        setArm(127);
+        vexSleep(25);
+    }
+    setArm(96);
+    //open claw
+    while(vexAdcGet(clawPot) > 2000)
+    {
+        setClaw(127);
+        vexSleep(25);
+    }
+    setClaw(0);
+    setArm(0);
+}
+
+void autoRightCube(void)
+{
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //drive 1/2 to cube
+    while(vexEncoderGet(driveFRPot) < 360)
+    {
+        driveFB(80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //bring arm down
+    while(vexAdcGet(armPot) > 1100)
+    {
+        setArm(-100);
+        vexSleep(25);
+    }
+    setArm(0);
+    //release preload
+    while(vexAdcGet(clawPot) > 1725)
+    {
+        setClaw(80);
+        vexSleep(25);
+    }
+    setClaw(0);
+    //drive 2/2 to cube
+    while(vexEncoderGet(driveFRPot) < 360)
+    {
+        driveFB(80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //grab cube and lock
+    while(vexAdcGet(clawPot) <= 3240)
+    {
+        setClaw(-127);
+        vexSleep(25);
+    }
+    setClaw(-15);
+    vexSleep(250);
+    //lift arm slightly and lock
+    while(vexAdcGet(armPot) < 2000)
+    {
+        setArm(127);
+        vexSleep(25);
+    }
+    setArm(15);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //turn towards fence
+    while(vexEncoderGet(driveFRPot) <= 600)
+    {
+        turnLR(80);
+        vexSleep(25);
+    }
+    turnLR(0);
+    vexSleep(500);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //back up to fence
+    while(vexEncoderGet(driveFRPot) > -1000)
+    {
+        driveFB(-80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //lift arm
+    while(vexAdcGet(armPot) < 3000)
+    {
+        setArm(127);
+        vexSleep(25);
+    }
+    setArm(96);
+    //open claw
+    while(vexAdcGet(clawPot) > 2000)
+    {
+        setClaw(127);
+        vexSleep(25);
+    }
+    setClaw(0);
+    setArm(0);
 }

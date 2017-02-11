@@ -26,16 +26,16 @@ vexAutonomous( void *arg )
             startAuto();
             switch(auton) {
                 case 1:
-                    autoLeft();
+                    autoLeftCorner();
                     break;
                 case 2:
-                    autoRight();
+                    autoRightCorner();
                     break;
                 case 3:
-                    autoLeftNoCube();
+                    autoLeftCube();
                     break;
                 case 4:
-                    autoRightNoCube();
+                    autoRightCube();
                     break;
                 case 5:
                     break;

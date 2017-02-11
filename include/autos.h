@@ -12,10 +12,10 @@ void setArm(int16_t lift);
 void setClaw(int16_t claw);
 
 void startAuto(void);
-void autoLeft(void);
-void autoRight(void);
-void autoLeftNoCube(void);
-void autoRightNoCube(void);
+void autoLeftCorner(void);
+void autoRightCorner(void);
+void autoLeftCube(void);
+void autoRightCube(void);
 
 #ifdef __cplusplus
 }
