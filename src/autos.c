@@ -95,9 +95,9 @@ void autoLeftCorner(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     //turn to left corner
-    while(vexEncoderGet(driveFRPot) <= 900)
+    while(vexEncoderGet(driveFRPot) <= 550)
     {
-        turnLR(80);
+        turnLR(-70);
         vexSleep(25);
     }
     turnLR(0);
@@ -129,9 +129,9 @@ void autoLeftCorner(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     //drive to left corner star
-    while(vexEncoderGet(driveFRPot) <= 360)
+    while(vexEncoderGet(driveFRPot) <= 150)
     {
-        driveFB(80);
+        driveFB(70);
         vexSleep(25);
     }
     driveFB(0);
@@ -165,9 +165,9 @@ void autoLeftCorner(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     //turn to fence
-    while(vexEncoderGet(driveFRPot) >= -900)
+    while(vexEncoderGet(driveFRPot) <= 300)
     {
-        turnLR(-80);
+        turnLR(-70);
         vexSleep(25);
     }
     turnLR(0);
@@ -251,9 +251,9 @@ void autoRightCorner(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     //turn to right corner
-    while(vexEncoderGet(driveFRPot) >= -900)
+    while(vexEncoderGet(driveFRPot) >= -550)
     {
-        turnLR(-80);
+        turnLR(70);
         vexSleep(25);
     }
     turnLR(0);
@@ -285,9 +285,9 @@ void autoRightCorner(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     //drive to right corner star
-    while(vexEncoderGet(driveFRPot) <= 360)
+    while(vexEncoderGet(driveFRPot) <= 150)
     {
-        driveFB(80);
+        driveFB(70);
         vexSleep(25);
     }
     driveFB(0);
@@ -321,9 +321,9 @@ void autoRightCorner(void)
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     //turn to fence
-    while(vexEncoderGet(driveFRPot) <= 900)
+    while(vexEncoderGet(driveFRPot) >= -300)
     {
-        turnLR(80);
+        turnLR(70);
         vexSleep(25);
     }
     turnLR(0);
@@ -394,6 +394,16 @@ void autoRightCorner(void)
 
 void autoLeftCube(void)
 {
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //clear starting tile
+    while(vexEncoderGet(driveFRPot) <= 360)
+    {
+        driveFB(80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexSleep(500);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     //drive 1/2 to cube
@@ -579,6 +589,16 @@ void autoLeftCube(void)
 
 void autoRightCube(void)
 {
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+    //clear starting tile
+    while(vexEncoderGet(driveFRPot) <= 360)
+    {
+        driveFB(80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    vexSleep(500);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
     //drive 1/2 to cube
