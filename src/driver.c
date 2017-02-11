@@ -34,7 +34,6 @@ vexOperator( void *arg )
 	// Run until asked to terminate
 	while(!chThdShouldTerminate())
 		{
-			liftFlag = 1;
 		// flash led/digi out
 		vexDigitalPinSet( kVexDigital_1, (blinkr++ >> 2) & 1);
 		vexDigitalPinSet( kVexDigital_2, (blinky++ >> 2) & 1);
