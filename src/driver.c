@@ -96,8 +96,8 @@ vexOperator( void *arg )
 			vexMotorSet(kVexMotor_9, 127);
 		} else if (vexControllerGet(Btn6DXmtr2)) {
 			vexMotorSet(kVexMotor_2, -127);
-			vexMotorSet(kVexMotor_3, 127);
-			vexMotorSet(kVexMotor_8, 127);
+			vexMotorSet(kVexMotor_3, -127);
+			vexMotorSet(kVexMotor_8, -127);
 			vexMotorSet(kVexMotor_9, -127);
 		/* ARM LOCK */
 		} else if (armLock == 1) {
