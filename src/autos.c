@@ -11,8 +11,11 @@
 //360 ticks forward/back/left/right = 1/2 tile
 //300 ticks turn for 45 degree
 
-int16_t clawPot = (int)kVexAnalog_7;
-int16_t armPot = (int)kVexAnalog_5;
+#define clawPot kVexAnalog_7
+#define armPot kVexAnalog_5
+
+#define driveBLPot kVexQuadEncoder_1
+#define driveFRPot kVexQuadEncoder_2
 
 void driveFB(int16_t drive)
 {
@@ -59,25 +62,19 @@ void startAuto(void)
 {
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
-    while(vexAdcGet(clawPot) < 1725)
+    while(vexAdcGet(clawPot) <= 1725)
     {
         setClaw(-80);
         vexSleep(25);
     }
     setClaw(0);
-    while(vexAdcGet(armPot) < 2000)
-    {
-        setArm(127);
-        vexSleep(25);
-    }
-    setArm(10);
 }
 
 void autoLeft(void)
 {
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
-    while(vexEncoderGet(kVexQuadEncoder_2) < 360)
+    while(vexEncoderGet(driveFRPot) <= 360)
     {
         driveFB(80);
         vexSleep(25);
@@ -85,7 +82,7 @@ void autoLeft(void)
     driveFB(0);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
-    while(vexEncoderGet(kVexQuadEncoder_2) < 900)
+    while(vexEncoderGet(driveFRPot) <= 900)
     {
         turnLR(80);
         vexSleep(25);
@@ -93,13 +90,42 @@ void autoLeft(void)
     turnLR(0);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
+    if(vexAdcGet(clawPot) >= 1725)
+    {
+        while(vexAdcGet(clawPot) >= 1725)
+        {
+            setClaw(80);
+            vexSleep(25);
+        }
+    }
+    else if(vexAdcGet(clawPot) <= 1725)
+    {
+        while(vexAdcGet(clawPot) <= 1725)
+        {
+            setClaw(-80);
+            vexSleep(25);
+        }
+    }
+    setClaw(0);
+    while(vexEncoderGet(driveFRPot) <= 360)
+    {
+        driveFB(80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    while(vexAdcGet(clawPot) < 3400)
+    {
+        setClaw(-127);
+        vexSleep(25);
+    }
+    setClaw(-15);
 }
 
 void autoRight(void)
 {
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
-    while(vexEncoderGet(kVexQuadEncoder_2) < 360)
+    while(vexEncoderGet(driveFRPot) <= 360)
     {
         driveFB(80);
         vexSleep(25);
@@ -107,7 +133,7 @@ void autoRight(void)
     driveFB(0);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
-    while(vexEncoderGet(kVexQuadEncoder_2) > -900)
+    while(vexEncoderGet(driveFRPot) >= -900)
     {
         turnLR(-80);
         vexSleep(25);
@@ -115,6 +141,35 @@ void autoRight(void)
     turnLR(0);
     vexEncoderSet(kVexQuadEncoder_1, 0);
     vexEncoderSet(kVexQuadEncoder_2, 0);
+    if(vexAdcGet(clawPot) >= 1725)
+    {
+        while(vexAdcGet(clawPot) >= 1725)
+        {
+            setClaw(80);
+            vexSleep(25);
+        }
+    }
+    else if(vexAdcGet(clawPot) <= 1725)
+    {
+        while(vexAdcGet(clawPot) <= 1725)
+        {
+            setClaw(-80);
+            vexSleep(25);
+        }
+    }
+    setClaw(0);
+    while(vexEncoderGet(driveFRPot) <= 360)
+    {
+        driveFB(80);
+        vexSleep(25);
+    }
+    driveFB(0);
+    while(vexAdcGet(clawPot) < 3400)
+    {
+        setClaw(-127);
+        vexSleep(25);
+    }
+    setClaw(-15);
 }
 
 void autoLeftNoCube(void)
