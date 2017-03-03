@@ -82,11 +82,11 @@ xDrive(void *arg)
             vexMotorSet(kVexMotor_5, trueSpeedS(joyLy));
             vexMotorSet(kVexMotor_7, trueSpeedS(joyLy));
         } else if(abs(joyLx) > 10 && abs(joyLx) > abs(joyLy)) {
-            vexMotorSet(kVexMotor_4, trueSpeedS(joyLx));
-            vexMotorSet(kVexMotor_6, trueSpeedS(joyLx));
+            vexMotorSet(kVexMotor_4, trueSpeedS(-joyLx));
+            vexMotorSet(kVexMotor_6, trueSpeedS(-joyLx));
             
-            vexMotorSet(kVexMotor_5, trueSpeedS(-joyLx));
-            vexMotorSet(kVexMotor_7, trueSpeedS(-joyLx));
+            vexMotorSet(kVexMotor_5, trueSpeedS(joyLx));
+            vexMotorSet(kVexMotor_7, trueSpeedS(joyLx));
         } else if(abs(joyRx) > 10) {
             vexMotorSet(kVexMotor_4, trueSpeedS(joyRx));
             vexMotorSet(kVexMotor_6, trueSpeedS(-joyRx));

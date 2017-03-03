@@ -5,11 +5,12 @@
 extern "C" {
 #endif
 
-void driveFB(int16_t drive);
-void driveLR(int16_t drive);
-void turnLR(int16_t drive);
-void setArm(int16_t lift);
-void setClaw(int16_t claw);
+void stopDrive(void);
+void driveFB(int16_t drive, int16_t pot);
+void driveLR(int16_t drive, int16_t pot);
+void turnLR(int16_t drive, int16_t pot);
+void setArm(int16_t lift, int16_t pot);
+void setClaw(int16_t claw, int16_t pot);
 
 void startAuto(void);
 void autoLeftCorner(void);
