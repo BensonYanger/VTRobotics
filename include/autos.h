@@ -6,9 +6,9 @@ extern "C" {
 #endif
 
 void stopDrive(void);
-void driveFB(int16_t drive, int16_t pot);
-void driveLR(int16_t drive, int16_t pot);
-void turnLR(int16_t drive, int16_t pot);
+void driveFB(int16_t drive, int16_t quad);
+void driveLR(int16_t drive, int16_t quad);
+void turnLR(int16_t drive, int16_t quad);
 void setArm(int16_t lift, int16_t pot);
 void stopArm(void);
 void setClaw(int16_t claw, int16_t pot);

@@ -24,10 +24,11 @@ void stopDrive(void) {
     vexMotorSet(kVexMotor_7, 0);
 }
 
-void driveFB(int16_t drive, int16_t pot)
+//positive drive with positive quad value -> goes forward
+void driveFB(int16_t drive, int16_t quad)
 {
     if(drive > 0) {
-        while(vexEncoderGet(driveFRPot) < pot) {
+        while(vexEncoderGet(driveFRPot) < quad) {
             vexMotorSet(kVexMotor_4, drive);
             vexMotorSet(kVexMotor_6, drive);
             vexMotorSet(kVexMotor_5, drive);
@@ -36,7 +37,7 @@ void driveFB(int16_t drive, int16_t pot)
         }
     }
     else if(drive < 0) {
-        while(vexEncoderGet(driveFRPot) > pot) {
+        while(vexEncoderGet(driveFRPot) > quad) {
             vexMotorSet(kVexMotor_4, drive);
             vexMotorSet(kVexMotor_6, drive);
             vexMotorSet(kVexMotor_5, drive);
@@ -49,11 +50,11 @@ void driveFB(int16_t drive, int16_t pot)
     }
 }
 
-//right pot is negative, negative drive right
-void driveLR(int16_t drive, int16_t pot)
+//negative drive, with a negative pot value -> drives right
+void driveLR(int16_t drive, int16_t quad)
 {
     if(drive > 0) {
-        while(vexEncoderGet(driveFRPot) < pot){
+        while(vexEncoderGet(driveFRPot) < quad){
             vexMotorSet(kVexMotor_4, drive);
             vexMotorSet(kVexMotor_6, drive);
             vexMotorSet(kVexMotor_5, -drive);
@@ -63,7 +64,7 @@ void driveLR(int16_t drive, int16_t pot)
         return;
     }
     else if(drive < 0) {
-        while(vexEncoderGet(driveFRPot) > pot){
+        while(vexEncoderGet(driveFRPot) > quad){
             vexMotorSet(kVexMotor_4, drive);
             vexMotorSet(kVexMotor_6, drive);
             vexMotorSet(kVexMotor_5, -drive);
@@ -77,11 +78,11 @@ void driveLR(int16_t drive, int16_t pot)
     }
 }
 
-//turn right negative, pot negative
-void turnLR(int16_t drive, int16_t pot)
+//negative drive, with a negative pot -> turns right
+void turnLR(int16_t drive, int16_t quad)
 {
     if(drive > 0) {
-        while(vexEncoderGet(driveFRPot) < pot){
+        while(vexEncoderGet(driveFRPot) < quad){
             vexMotorSet(kVexMotor_4, -drive);
             vexMotorSet(kVexMotor_6, drive);
             vexMotorSet(kVexMotor_5, drive);
@@ -91,7 +92,7 @@ void turnLR(int16_t drive, int16_t pot)
         return;
     }
     else if(drive < 0) {
-        while(vexEncoderGet(driveFRPot) > pot){
+        while(vexEncoderGet(driveFRPot) > quad){
             vexMotorSet(kVexMotor_4, -drive);
             vexMotorSet(kVexMotor_6, drive);
             vexMotorSet(kVexMotor_5, drive);
@@ -106,6 +107,7 @@ void turnLR(int16_t drive, int16_t pot)
 }
 
 //4092 @ bottom, 1865 @ top
+//positive claw value with negative pot -> arm goes up
 void setArm(int16_t lift, int16_t pot)
 {
     if(lift > 0) {
@@ -138,7 +140,8 @@ void stopArm(void) {
     vexMotorSet(kVexMotor_9, 0);
 }
 
-//3300 closed, 465 @ open
+//3625 closed, 520 open
+//negative claw with a greater pot value -> close claw
 void setClaw(int16_t claw, int16_t pot)
 {
     if(claw > 0) {
@@ -175,10 +178,10 @@ void startAuto(void)
     setArm(-50, 3750);
     stopArm();
     vexSleep(250);
-    setClaw(-60, 3300);
+    setClaw(-60, 3000);
     stopClaw();
     vexSleep(250);
-    setClaw(60, 2000);
+    setClaw(60, 1000);
     stopClaw();
     vexSleep(250);
 }
