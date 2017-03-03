@@ -77,27 +77,38 @@ void driveLR(int16_t drive, int16_t pot)
     }
 }
 
+//turn right negative, pot negative
 void turnLR(int16_t drive, int16_t pot)
 {
-    vexMotorSet(kVexMotor_4, drive);
-    vexMotorSet(kVexMotor_6, -drive);
-    vexMotorSet(kVexMotor_5, -drive);
-    vexMotorSet(kVexMotor_7, drive);
+    if(drive > 0) {
+        while(vexEncoderGet(driveFRPot) < pot){
+            vexMotorSet(kVexMotor_4, -drive);
+            vexMotorSet(kVexMotor_6, drive);
+            vexMotorSet(kVexMotor_5, drive);
+            vexMotorSet(kVexMotor_7, -drive);
+            vexSleep(25);
+        }
+        return;
+    }
+    else if(drive < 0) {
+        while(vexEncoderGet(driveFRPot) > pot){
+            vexMotorSet(kVexMotor_4, -drive);
+            vexMotorSet(kVexMotor_6, drive);
+            vexMotorSet(kVexMotor_5, drive);
+            vexMotorSet(kVexMotor_7, -drive);
+            vexSleep(25);
+        }
+        return;
+    }
+    else {
+        return;
+    }
 }
 
 //4092 @ bottom, 1865 @ top
 void setArm(int16_t lift, int16_t pot)
 {
     if(lift > 0) {
-        while(vexAdcGet(armPot) < pot) {
-            vexMotorSet(kVexMotor_2, lift);
-            vexMotorSet(kVexMotor_3, lift);
-            vexMotorSet(kVexMotor_8, lift);
-            vexMotorSet(kVexMotor_9, lift);
-            vexSleep(25);
-        }
-    }
-    else if(lift < 0) {
         while(vexAdcGet(armPot) > pot) {
             vexMotorSet(kVexMotor_2, lift);
             vexMotorSet(kVexMotor_3, lift);
@@ -106,39 +117,70 @@ void setArm(int16_t lift, int16_t pot)
             vexSleep(25);
         }
     }
+    else if(lift < 0) {
+        while(vexAdcGet(armPot) < pot) {
+            vexMotorSet(kVexMotor_2, lift);
+            vexMotorSet(kVexMotor_3, lift);
+            vexMotorSet(kVexMotor_8, lift);
+            vexMotorSet(kVexMotor_9, lift);
+            vexSleep(25);
+        }
+    }
+    else {
+        return;
+    }
 }
 
-//3450 closed, 465 @ open
+void stopArm(void) {
+    vexMotorSet(kVexMotor_2, 0);
+    vexMotorSet(kVexMotor_3, 0);
+    vexMotorSet(kVexMotor_8, 0);
+    vexMotorSet(kVexMotor_9, 0);
+}
+
+//3300 closed, 465 @ open
 void setClaw(int16_t claw, int16_t pot)
 {
     if(claw > 0) {
         while(vexAdcGet(clawPot) > pot) {
-
+            vexMotorSet(kVexMotor_1, claw);
+            vexMotorSet(kVexMotor_10, claw);
+            vexSleep(25);
         }
     }
     else if(claw < 0) {
         while(vexAdcGet(clawPot) < pot) {
-
+            vexMotorSet(kVexMotor_1, claw);
+            vexMotorSet(kVexMotor_10, claw);
+            vexSleep(25);
         }
     }
-    vexMotorSet(kVexMotor_1, claw);
-    vexMotorSet(kVexMotor_10, claw);
+    else {
+        return;
+    }
+}
+
+void stopClaw(void) {
+    vexMotorSet(kVexMotor_1, 0);
+    vexMotorSet(kVexMotor_10, 0);
 }
 
 //-------------------------------
 
 void startAuto(void)
 {
-    vexEncoderSet(driveFRPot, 0);
-    vexEncoderSet(driveBLPot, 0);
-    driveFB(60, 360);
-    stopDrive();
-    vexEncoderSet(driveFRPot, 0);
-    vexEncoderSet(driveBLPot, 0);
-    driveLR(60, 360);
-    stopDrive();
-    vexEncoderSet(driveFRPot, 0);
-    vexEncoderSet(driveBLPot, 0);
+    setArm(100, 3000);
+    stopArm();
+    vexSleep(250);
+    setArm(-50, 3750);
+    stopArm();
+    vexSleep(250);
+    setClaw(-60, 3300);
+    stopClaw();
+    vexSleep(250);
+    setClaw(60, 2000);
+    stopClaw();
+    vexSleep(250);
 }
 
 void autoLeftCorner(void)

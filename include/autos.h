@@ -10,7 +10,9 @@ void driveFB(int16_t drive, int16_t pot);
 void driveLR(int16_t drive, int16_t pot);
 void turnLR(int16_t drive, int16_t pot);
 void setArm(int16_t lift, int16_t pot);
+void stopArm(void);
 void setClaw(int16_t claw, int16_t pot);
+void stopClaw(void);
 
 void startAuto(void);
 void autoLeftCorner(void);
