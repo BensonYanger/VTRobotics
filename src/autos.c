@@ -78,7 +78,7 @@ void autoLeftCubeMid(void)
     resetEnc();
     driveFBfor(-110, -600);
     setDriveFB(-45);
-    setArmfor(90, 2150);
+    setArmfor(65, 2150);
     setArm(0);
     stopDrive();
     vexSleep(250);
@@ -140,7 +140,7 @@ void autoRightCubeMid(void)
     resetEnc();
     driveFBfor(-110, -600);
     setDriveFB(-45);
-    setArmfor(90, 2150);
+    setArmfor(65, 2150);
     setArm(0);
     stopDrive();
     vexSleep(250);
