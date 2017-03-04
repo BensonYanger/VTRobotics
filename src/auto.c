@@ -2,6 +2,7 @@
 
 #include "auto.h"
 #include "autos.h"
+#include "autof.h"
 #include "lcd.h"
 
 #include "drive.h"

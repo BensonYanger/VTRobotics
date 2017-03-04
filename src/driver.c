@@ -100,10 +100,10 @@ vexOperator( void *arg )
 			vexMotorSet(kVexMotor_9, -127);
 		/* ARM LOCK */
 		} else if (armLock == 1) {
-			vexMotorSet(kVexMotor_2, 15);
-			vexMotorSet(kVexMotor_3, 15);
-			vexMotorSet(kVexMotor_8, 15);
-			vexMotorSet(kVexMotor_9, 15);
+			vexMotorSet(kVexMotor_2, 10);
+			vexMotorSet(kVexMotor_3, 10);
+			vexMotorSet(kVexMotor_8, 10);
+			vexMotorSet(kVexMotor_9, 10);
 		} else {
 			vexMotorSet(kVexMotor_2, 0);
 			vexMotorSet(kVexMotor_3, 0);
@@ -127,8 +127,8 @@ vexOperator( void *arg )
 			vexMotorSet(kVexMotor_10, -127);
 		/* CLAW LOCK */
 		} else if (clawLock == 1) {
-			vexMotorSet(kVexMotor_1, -15);
-			vexMotorSet(kVexMotor_10, -15);
+			vexMotorSet(kVexMotor_1, -12);
+			vexMotorSet(kVexMotor_10, -12);
 		} else {
 			vexMotorSet(kVexMotor_1, 0);
 			vexMotorSet(kVexMotor_10, 0);
