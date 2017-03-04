@@ -6,10 +6,10 @@ extern "C" {
 #endif
 
 void startAuto(void);
-void autoLeftCorner(void);
-void autoRightCorner(void);
-void autoLeftCube(void);
-void autoRightCube(void);
+void autoLeftCubeMid(void);
+void autoRightCubeMid(void);
+void autoLeft(void);
+void autoRight(void);
 
 #ifdef __cplusplus
 }

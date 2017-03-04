@@ -23,53 +23,137 @@ void startAuto(void)
     setClaw(0);
     setArmfor(127, 3250);
     stopArm();
-    setArmfor(-40, 4025);
-    setArm(10);
-    setClawfor(-60, 2300);
+    setClawfor(-60, 1700);
     setClaw(5);
-    vexSleep(250);
-    setClaw(-15);
     vexSleep(250);
 }
 
-void autoLeftCorner(void)
+void autoLeftCubeMid(void)
 {
     resetEnc();
-    driveFBfor(80, 720);
+    driveFBfor(60, 220);
+    stopDrive();
+    setArmfor(-50, 4035);
+    setArm(10);
+    driveFBfor(100, 900);
     stopDrive();
     vexSleep(250);
     resetEnc();
     setClawfor(-127, 3000);
     setClaw(-40);
-    vexSleep(500);
+    vexSleep(300);
     setArmfor(100, 3900);
     setArm(10);
     resetEnc();
-    turnLRfor(80, 900);
+    driveFBfor(70, 100);
+    stopDrive();
+    vexSleep(250);
+    resetEnc();
+    turnLRfor(-80, -550);
     stopDrive();
     vexSleep(250);
     resetEnc();
     driveFBfor(-90, -300);
-    setDriveFB(-50);
-    setArmfor(127, 2250);
+    setDriveFB(-45);
+    setArmfor(127, 2150);
     setArm(0);
-    setClawfor(127, 2000);
+    stopDrive();
+    setClawfor(127, 1900);
     setClaw(0);
+    resetEnc();
+    setClawfor(-50, 1600);
+    setArmfor(-70, 3900);
+    setArm(15);
+    driveFBfor(80, 300);
     stopDrive();
     resetEnc();
+    vexSleep(250);
+    resetEnc();
+    driveFBfor(80, 650);
+    stopDrive();
+    setClawfor(-127, 3000);
+    setClaw(-30);
+    setArmfor(70, 3000);
+    resetEnc();
+    driveFBfor(-110, -600);
+    setDriveFB(-45);
+    setArmfor(90, 2150);
+    setArm(0);
+    stopDrive();
+    setClawfor(127, 1900);
+    setClaw(0);
+    resetEnc();
+    setClawfor(-50, 1600);
+    setArmfor(-70, 3900);
+    setArm(15);
 }
 
-void autoRightCorner(void)
+void autoRightCubeMid(void)
+{
+    resetEnc();
+    driveFBfor(60, 220);
+    stopDrive();
+    setArmfor(-50, 4035);
+    setArm(10);
+    driveFBfor(100, 900);
+    stopDrive();
+    vexSleep(250);
+    resetEnc();
+    setClawfor(-127, 3000);
+    setClaw(-40);
+    vexSleep(300);
+    setArmfor(100, 3900);
+    setArm(10);
+    resetEnc();
+    driveFBfor(70, 100);
+    stopDrive();
+    vexSleep(250);
+    resetEnc();
+    turnLRfor(80, 550);
+    stopDrive();
+    vexSleep(250);
+    resetEnc();
+    driveFBfor(-90, -300);
+    setDriveFB(-45);
+    setArmfor(127, 2150);
+    setArm(0);
+    stopDrive();
+    setClawfor(127, 1900);
+    setClaw(0);
+    resetEnc();
+    setClawfor(-50, 1600);
+    setArmfor(-70, 3900);
+    setArm(15);
+    driveFBfor(80, 300);
+    stopDrive();
+    resetEnc();
+    vexSleep(250);
+    resetEnc();
+    driveFBfor(80, 650);
+    stopDrive();
+    setClawfor(-127, 3000);
+    setClaw(-30);
+    setArmfor(70, 3000);
+    resetEnc();
+    driveFBfor(-110, -600);
+    setDriveFB(-45);
+    setArmfor(90, 2150);
+    setArm(0);
+    stopDrive();
+    setClawfor(127, 1900);
+    setClaw(0);
+    resetEnc();
+    setClawfor(-50, 1600);
+    setArmfor(-70, 3900);
+    setArm(15);
+}
+
+void autoLeft(void)
 {
 
 }
 
-void autoLeftCube(void)
-{
-
-}
-
-void autoRightCube(void)
+void autoRight(void)
 {
 
 }
