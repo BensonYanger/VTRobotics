@@ -8,8 +8,8 @@ extern "C" {
 void startAuto(void);
 void autoLeftCubeMid(void);
 void autoRightCubeMid(void);
-void autoLeft(void);
-void autoRight(void);
+void autoBack(void);
+void autoClawOut(void);
 
 #ifdef __cplusplus
 }

@@ -24,19 +24,20 @@ vexAutonomous( void *arg )
 
     while(1)
         {
-            startAuto();
             switch(auton) {
                 case 1:
+                    startAuto();
                     autoLeftCubeMid();
                     break;
                 case 2:
+                    startAuto();
                     autoRightCubeMid();
                     break;
                 case 3:
-                    autoLeft();
+                    autoBack();
                     break;
                 case 4:
-                    autoRight();
+                    autoClawOut();
                     break;
                 case 5:
                     break;

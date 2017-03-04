@@ -152,12 +152,40 @@ void autoRightCubeMid(void)
     setArm(15);
 }
 
-void autoLeft(void)
+void autoBack(void)
 {
-
+    resetEnc();
+    setClawfor(-60, 1200);
+    setClaw(0);
+    vexSleep(250);
+    driveFBfor(-60, -600);
+    stopDrive();
+    vexSleep(500);
+    resetEnc();
+    setClawfor(-90, 1500);
+    setClaw(0);
+    vexSleep(250);
+    driveFBfor(40, 250);
+    stopDrive();
+    setClawfor(-127, 3000);
+    setClaw(-40);
+    setArmfor(100, 3300);
+    setArm(10);
+    driveFBfor(-90, -450);
+    setDriveFB(-45);
+    setArmfor(127, 2150);
+    setArm(0);
+    stopDrive();
+    setClawfor(127, 1900);
+    setClaw(0);
+    resetEnc();
 }
 
-void autoRight(void)
+void autoClawOut(void)
 {
-
+    resetEnc();
+    driveFBfor(60, 300);
+    stopDrive();
+    vexSleep(500);
+    startAuto();
 }
