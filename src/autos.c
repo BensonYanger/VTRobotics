@@ -19,15 +19,13 @@
 
 void startAuto(void)
 {
-    setArmfor(127, 3000);
+    setArmfor(127, 3250);
     stopArm();
-    setArmfor(-64, 3750);
+    setArmfor(-64, 3900);
     setArm(10);
-    setClawfor(-60, 3000);
-    stopClaw();
-    vexSleep(250);
-    setClawfor(60, 1000);
-    stopClaw();
+    setClawfor(-60, 2000);
+    setClaw(5);
+    setClaw(-5);
     vexSleep(250);
 }
 
