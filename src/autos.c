@@ -42,7 +42,7 @@ void autoLeftCubeMid(void)
     setClawfor(-127, 3000);
     setClaw(-40);
     vexSleep(300);
-    setArmfor(100, 3900);
+    setArmfor(100, 3300);
     setArm(10);
     resetEnc();
     driveFBfor(70, 100);
@@ -72,7 +72,8 @@ void autoLeftCubeMid(void)
     driveFBfor(80, 650);
     stopDrive();
     setClawfor(-127, 3000);
-    setClaw(-30);
+    setClaw(-50);
+    vexSleep(250);
     setArmfor(70, 3000);
     resetEnc();
     driveFBfor(-110, -600);
@@ -80,6 +81,7 @@ void autoLeftCubeMid(void)
     setArmfor(90, 2150);
     setArm(0);
     stopDrive();
+    vexSleep(250);
     setClawfor(127, 1900);
     setClaw(0);
     resetEnc();
@@ -102,7 +104,7 @@ void autoRightCubeMid(void)
     setClawfor(-127, 3000);
     setClaw(-40);
     vexSleep(300);
-    setArmfor(100, 3900);
+    setArmfor(100, 3300);
     setArm(10);
     resetEnc();
     driveFBfor(70, 100);
@@ -132,7 +134,8 @@ void autoRightCubeMid(void)
     driveFBfor(80, 650);
     stopDrive();
     setClawfor(-127, 3000);
-    setClaw(-30);
+    setClaw(-50);
+    vexSleep(250);
     setArmfor(70, 3000);
     resetEnc();
     driveFBfor(-110, -600);
@@ -140,6 +143,7 @@ void autoRightCubeMid(void)
     setArmfor(90, 2150);
     setArm(0);
     stopDrive();
+    vexSleep(250);
     setClawfor(127, 1900);
     setClaw(0);
     resetEnc();
