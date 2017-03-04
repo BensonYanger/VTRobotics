@@ -13,6 +13,11 @@
 #define driveBLPot kVexQuadEncoder_1
 #define driveFRPot kVexQuadEncoder_2
 
+void resetEnc(void) {
+    vexEncoderSet(kVexQuadEncoder_1, 0);
+    vexEncoderSet(kVexQuadEncoder_2, 0);
+}
+
 void stopDrive(void) {
     vexMotorSet(kVexMotor_4, 0);
     vexMotorSet(kVexMotor_5, 0);

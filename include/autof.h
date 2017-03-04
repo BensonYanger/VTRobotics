@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+void resetEnc(void);
+
 void stopDrive(void);
 
 void setDriveFB(int16_t drive);
