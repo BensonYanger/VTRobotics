@@ -26,10 +26,12 @@ vexAutonomous( void *arg )
         {
             switch(auton) {
                 case 1:
+                    driveFBfor(60, 150);
                     startAuto();
                     autoLeftCubeMid();
                     break;
                 case 2:
+                    driveFBfor(60, 150);
                     startAuto();
                     autoRightCubeMid();
                     break;

@@ -31,11 +31,11 @@ void startAuto(void)
 void autoLeftCubeMid(void)
 {
     resetEnc();
-    driveFBfor(60, 220);
+    driveFBfor(60, 100);
     stopDrive();
     setArmfor(-50, 4035);
     setArm(10);
-    driveFBfor(100, 900);
+    driveFBfor(100, 800);
     stopDrive();
     vexSleep(250);
     resetEnc();
@@ -93,11 +93,11 @@ void autoLeftCubeMid(void)
 void autoRightCubeMid(void)
 {
     resetEnc();
-    driveFBfor(60, 220);
+    driveFBfor(60, 100);
     stopDrive();
     setArmfor(-50, 4035);
     setArm(10);
-    driveFBfor(100, 900);
+    driveFBfor(100, 800);
     stopDrive();
     vexSleep(250);
     resetEnc();

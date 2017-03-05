@@ -49,31 +49,31 @@ vexOperator( void *arg )
 		/* ARM LOCK TOGGLE  */
 		if(vexControllerGet(Btn8L) && armLock == 0) {
 			armLock = 1;
-			vexSleep(75);
+			vexSleep(150);
 		} else if(vexControllerGet(Btn8L) && armLock == 1) {
 			armLock = 0;
-			vexSleep(75);
+			vexSleep(150);
 		} else if(vexControllerGet(Btn8LXmtr2) && armLock == 0) {
 			armLock = 1;
-			vexSleep(75);
+			vexSleep(150);
 		} else if(vexControllerGet(Btn8LXmtr2) && armLock == 1) {
 			armLock = 0;
-			vexSleep(75);
+			vexSleep(150);
 		}
 
 		/* CLAW LOCK TOGGLE */
 		if(vexControllerGet(Btn8D) && clawLock == 0) {
 			clawLock = 1;
-			vexSleep(75);
+			vexSleep(150);
 		} else if(vexControllerGet(Btn8D) && clawLock == 1) {
 			clawLock = 0;
-			vexSleep(75);
+			vexSleep(150);
 		} else if(vexControllerGet(Btn8DXmtr2) && clawLock == 0) {
 			clawLock = 1;
-			vexSleep(75);
+			vexSleep(150);
 		} else if(vexControllerGet(Btn8DXmtr2) && clawLock == 1) {
 			clawLock = 0;
-			vexSleep(75);
+			vexSleep(150);
 		}
 
 		/* CLAW ARM */
@@ -100,6 +100,7 @@ vexOperator( void *arg )
 			vexMotorSet(kVexMotor_9, -127);
 		/* ARM LOCK */
 		} else if (armLock == 1) {
+			vexSleep(50);
 			vexMotorSet(kVexMotor_2, 10);
 			vexMotorSet(kVexMotor_3, 10);
 			vexMotorSet(kVexMotor_8, 10);
